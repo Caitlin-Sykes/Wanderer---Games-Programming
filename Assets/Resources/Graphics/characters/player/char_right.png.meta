@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -253,12 +253,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      wolf_gray_right_2: 1681763851
-      wolf_gray_right_1: 1989420316
-      wolf_gray_right_5: 1075769773
-      wolf_gray_right_4: 260912070
       wolf_gray_right_0: -560543065
+      wolf_gray_right_1: 1989420316
+      wolf_gray_right_2: 1681763851
       wolf_gray_right_3: 2101932795
+      wolf_gray_right_4: 260912070
+      wolf_gray_right_5: 1075769773
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

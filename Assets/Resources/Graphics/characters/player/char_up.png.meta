@@ -6,7 +6,7 @@ TextureImporter:
   serializedVersion: 12
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -254,11 +254,11 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       char_up_0: -640845499
-      char_up_3: -134700350
-      char_up_2: 448703055
       char_up_1: 169010138
-      char_up_5: 925964707
+      char_up_2: 448703055
+      char_up_3: -134700350
       char_up_4: -804852423
+      char_up_5: 925964707
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
