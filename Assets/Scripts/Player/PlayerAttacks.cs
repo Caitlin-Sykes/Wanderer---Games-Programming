@@ -43,7 +43,7 @@ public class PlayerAttacks : MonoBehaviour
         attackBox.SetActive(true);
 
         // Waits for two seconds
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(1.0f);
 
         // Disables it again
         attackBox.SetActive(false);
