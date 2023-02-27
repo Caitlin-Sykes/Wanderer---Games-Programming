@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Health : MonoBehaviour
 {
@@ -28,8 +29,8 @@ public class Health : MonoBehaviour
 
         // If health is 0 and tag is enemy, destroys game object and logs to console
         else if (health < 0 && this.CompareTag("Enemy")) {
-            anim.SetTrigger("EnemyDeath");
-            Destroy(this.gameObject);
+            // Starts couroutine
+            StartCoroutine(death());
             print("You are dead, so very dead, enemy dead");
         }
     }
@@ -41,9 +42,17 @@ public class Health : MonoBehaviour
             print(health);
         }
     }
+
+    // Destroys the game object
+    IEnumerator death() {
+        // Triggers death animation
+        anim.SetTrigger("EnemyDeath");
+        // Waits
+        yield return new WaitForSeconds(1f);
+        // Destroys object
+        Destroy(this.gameObject);
+    }
 }
 
 // TODO: add some AI for enemies
-// TODO: fix shit.
-// TODO: back up working code to github
 

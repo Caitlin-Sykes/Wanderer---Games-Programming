@@ -3284,6 +3284,22 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 13.052887
       objectReference: {fileID: 0}
+    - target: {fileID: 362894351008272562, guid: 394e1193b8a387944ab152f1067e069d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 585736015782323090, guid: 394e1193b8a387944ab152f1067e069d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3396742259750998252, guid: 394e1193b8a387944ab152f1067e069d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8233760875098770363, guid: 394e1193b8a387944ab152f1067e069d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8238738659339195253, guid: 394e1193b8a387944ab152f1067e069d, type: 3}
       propertyPath: anim
       value: 
@@ -6443,9 +6459,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db506c24094ae944ba8db62873538185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
+  health: 5
   changeScene: {fileID: 4906526422351682832, guid: 1acadfa2fb22466438a52fb66a1408d4, type: 3}
-  MAXHEALTH: 20
+  MAXHEALTH: 5
   anim: {fileID: 8480444380858958954}
 --- !u!61 &8480444380858958934
 BoxCollider2D:
