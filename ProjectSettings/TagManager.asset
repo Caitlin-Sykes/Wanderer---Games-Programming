@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Floor
+  - Walls
+  - Doors
+  - Decor
+  - Water
+  - Collideable Decor
+  - ScreenTransition
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -40,4 +48,25 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Floor
+    uniqueID: 3622356877
+    locked: 0
+  - name: Water
+    uniqueID: 1837915831
+    locked: 0
+  - name: Walls
+    uniqueID: 980317665
+    locked: 0
+  - name: Doors
+    uniqueID: 2460821211
+    locked: 0
+  - name: Decor
+    uniqueID: 1809268467
+    locked: 0
+  - name: Collideable Decor
+    uniqueID: 3102473583
+    locked: 0
+  - name: Top
+    uniqueID: 3429024307
     locked: 0
