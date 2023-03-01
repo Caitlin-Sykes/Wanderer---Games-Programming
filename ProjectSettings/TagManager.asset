@@ -9,9 +9,12 @@ TagManager:
   - Doors
   - Decor
   - Water
-  - Collideable Decor
   - ScreenTransition
   - Enemy
+  - Bones
+  - Bed
+  - Trees
+  - Rocks
   layers:
   - Default
   - TransparentFX
