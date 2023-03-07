@@ -15,6 +15,10 @@ TagManager:
   - Bed
   - Trees
   - Rocks
+  - HitboxUp
+  - HitboxDown
+  - HitboxLeft
+  - HitboxRight
   layers:
   - Default
   - TransparentFX
