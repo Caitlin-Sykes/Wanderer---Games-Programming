@@ -3630,11 +3630,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8480444381791392738, guid: 394e1193b8a387944ab152f1067e069d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.63
+      value: -6.01
       objectReference: {fileID: 0}
     - target: {fileID: 8480444381791392738, guid: 394e1193b8a387944ab152f1067e069d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.01
+      value: 3.72
       objectReference: {fileID: 0}
     - target: {fileID: 8480444381791392738, guid: 394e1193b8a387944ab152f1067e069d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3920,7 +3920,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8480444380858958957}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.2, y: 2.8, z: 1}
+  m_LocalPosition: {x: 7.01, y: -2.67, z: 1}
   m_LocalScale: {x: 4.4748, y: 5.5935, z: 0.55935}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3941,7 +3941,7 @@ Animator:
   m_GameObject: {fileID: 8480444380858958957}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9bacf3655e50b244caf8f8028e1e42fc, type: 2}
+  m_Controller: {fileID: 9100000, guid: b559be4eab3f68d48a78df0e4313430d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4015,6 +4015,7 @@ GameObject:
   - component: {fileID: 8480444380858958952}
   - component: {fileID: 8480444380858958955}
   - component: {fileID: 8480444380858958954}
+  - component: {fileID: 8480444380858958959}
   - component: {fileID: 8480444380858958934}
   - component: {fileID: 8238738658406728959}
   - component: {fileID: 633759616}
@@ -4039,4 +4040,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2083051742}
+  em: {fileID: 8480444380858958959}
   speed: 3
+--- !u!114 &8480444380858958959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8480444380858958957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 280c4bac1a6d2b144a74564ba4958229, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 8480444380858958954}

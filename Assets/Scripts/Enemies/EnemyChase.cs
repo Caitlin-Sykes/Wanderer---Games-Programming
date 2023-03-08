@@ -4,25 +4,27 @@ using UnityEngine;
 public class EnemyChase : MonoBehaviour
 
 {
-    // Variable to hold the position of the enemy
-    public Transform player;
+    public Transform player; // Variable to hold the position of the enemy
 
-    // Variable to hold the position of the enemy
-    private Vector3 enemy;
+    public EnemyMovement em;  // Variable to hold an instance of EnemyMovement
 
-    // Variable to hold the speed of the enemy
+    private Vector3 enemy; // Variable to hold the position of the enemy
+
     public float speed;
-
-    // Update is called once per frame
     void Update()
     {
 
-        // Variable to store the current position of the player
-    
-
-
         //move towards the player
         transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+
+        // Calls animationMovement function from EnemyMovement
+        em.animationMovement(player.position, transform.position);
+
+        
+
+        // gets current direction
+
+
 
 
     }
@@ -78,6 +80,7 @@ public class EnemyChase : MonoBehaviour
     // TODO: fix bouncy
     // TODO: make better
 }
+
 
 // enemy types: multiplies like rabbits
 // aggressive smaller animals
