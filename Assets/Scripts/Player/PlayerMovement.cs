@@ -51,13 +51,16 @@ public class PlayerMovement : MonoBehaviour
         anim.SetFloat("horizontal", direction.y);
         anim.SetBool("is_moving", is_moving);
         anim.SetBool("hide", hide);
+    }
 
-        if (attack == true) {
+    public void attackAnim() {
+        if (attack == true)
+        {
             attack = false;
             anim.SetInteger("attackDir", attackDir);
             anim.SetTrigger("Attack");
-
         }
+        
     }
 
     // Gets the player's input

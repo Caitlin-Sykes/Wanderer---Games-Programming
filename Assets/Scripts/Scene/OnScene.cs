@@ -7,6 +7,7 @@ public class OnScene : MonoBehaviour
 {
     public UnityEvent enemyAttackEvent;
 
+
     void Start() {
         enemyAttackEvent.Invoke();
     }

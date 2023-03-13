@@ -17,7 +17,7 @@ public class EnemyMovement : MonoBehaviour
        
         // A series of if statements to determine what animation should play
         if (enemy.x > player.x & enemy.y > player.y) {
-            if (gradient >= 0.15 & gradient <= 0.85) {
+            if (gradient >= 0.20 & gradient <= 0.80) {
                 setAnimator(-1, -1, true);
             }
 
@@ -29,7 +29,7 @@ public class EnemyMovement : MonoBehaviour
 
         else if (enemy.x < player.x & enemy.y < player.y)
         {
-            if (gradient >= 0.15 & gradient <= 0.85)
+            if (gradient >= 0.20 & gradient <= 0.80)
             {
                 setAnimator(1, 1, true);
             }
@@ -43,7 +43,7 @@ public class EnemyMovement : MonoBehaviour
 
         else if (enemy.x > player.x & enemy.y < player.y)
         {
-            if (gradient >= -0.15 & gradient <= -0.85)
+            if (gradient >= -0.20 & gradient <= -0.20)
             {
                 setAnimator(1, -1, true);
             }
@@ -57,7 +57,7 @@ public class EnemyMovement : MonoBehaviour
 
         else if (enemy.x < player.x & enemy.y > player.y)
         {
-            if (gradient >= -0.15 & gradient <= -0.85)
+            if (gradient >= -0.20 & gradient <= -0.80)
             {
                 setAnimator(-1, 1, true);
             }

@@ -14,6 +14,9 @@ public class EnemyChase : MonoBehaviour
 
     private int damage {get; set;} = 5;
 
+    // holds attack damage
+    private bool invinceFrame { get; set; } = false;
+
     // Called when "EnemyStart" is broadcasted
     private IEnumerator EnemyStart() {
 
@@ -34,7 +37,7 @@ public class EnemyChase : MonoBehaviour
     }
 
     // Gets the collisions
-    private void OnTriggerEnter2D(Collider2D collide)
+    private IEnumerator OnTriggerEnter2D(Collider2D collide)
     {
 
         int attackDir = em.getAttackDir(player, transform.position);
@@ -42,19 +45,26 @@ public class EnemyChase : MonoBehaviour
         // print(player.transform.position);
         // print("enem" + transform.position);
     
-        if (attackDir != -1) {
+        if (attackDir != -1 && invinceFrame != true) {
 
             // If tag is enemy and it has health
             if (collide.CompareTag("Player") && collide.GetComponent<Health>() != null)
             {
-    
                 // Initialises instance
                 Health healthVar = collide.GetComponent<Health>();
             
                 // Decrements health
                 healthVar.healthDecrement(damage);
 
+                invinceFrame = true;
+                yield return new WaitForSecondsRealtime(2);
+                invinceFrame = false;
+
             }
+        }
+
+        else {
+            yield return new WaitForSecondsRealtime(2f);
         }
     }
 
@@ -107,9 +117,7 @@ public class EnemyChase : MonoBehaviour
         }
     }
 
-    // TODO: fix chasing algorithm so it chases
-    // TODO: fix bouncy
-    // TODO: make better
+
 
 
 
@@ -119,7 +127,8 @@ public class EnemyChase : MonoBehaviour
 
 
 
-// enemy types: multiplies like rabbits
+//TODO: more enemy types
+//  enemy types: multiplies like rabbits
 // aggressive smaller animals
 // quick deer
 // sneaky birds.
