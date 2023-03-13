@@ -26,14 +26,13 @@ public class PlayerMovement : MonoBehaviour
     public PlayerAttacks pa;
 
     // Variable to determine attacking direction (1 - N, 2-E, 3-S, 4-W)
-    public int attackDir;
+    private int attackDir;
 
     private bool attack;
 
 
     void Start() {
         anim = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody2D>();
         attack = false;
     }
 

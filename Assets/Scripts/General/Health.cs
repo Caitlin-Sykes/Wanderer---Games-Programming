@@ -3,8 +3,8 @@ using System.Collections;
 
 public class Health : MonoBehaviour
 {
-    // Player Health
-    [SerializeField] private int health;
+    //Health
+    [SerializeField] public int health;
 
     //Instance of Change Scene
     public ChangeScene changeScene;
@@ -31,7 +31,6 @@ public class Health : MonoBehaviour
         else if (health < 0 && this.CompareTag("Enemy")) {
             // Starts couroutine
             StartCoroutine(death());
-            print("You are dead, so very dead, enemy dead");
         }
     }
 
@@ -53,6 +52,4 @@ public class Health : MonoBehaviour
         Destroy(this.gameObject);
     }
 }
-
-// TODO: add some AI for enemies
 

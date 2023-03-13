@@ -29,7 +29,7 @@ public class ChangeScene : MonoBehaviour
 
     // Loads scene
     public void loadScene(string sceneToLoad) {
-        // Starts a Coroutine (basically multithreading)
+        // Starts a Coroutine (basically multithreading)    
         StartCoroutine(loadSceneTransitions(sceneToLoad));
     }
 

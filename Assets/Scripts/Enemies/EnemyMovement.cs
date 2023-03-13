@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    // public EnemyChase ec; //instance of EnemyChase class
     public Animator anim;
 
     private float gradient; //a variable to hold the gradientnitude
@@ -13,85 +12,59 @@ public class EnemyMovement : MonoBehaviour
     public void animationMovement(Vector2 player, Vector3 enemy) {
 
         gradient = (calcGradient(player, enemy));
-        print("gradient" + gradient);
-        anim.SetBool("is_moving", false);
-        anim.SetFloat("vertical", 0);
-        anim.SetFloat("horizontal", 0);
+        setAnimator(0, 0, false);
 
-        // If the enemy x is greater than player x and same for y, then move diagonal down left
+       
+        // A series of if statements to determine what animation should play
         if (enemy.x > player.x & enemy.y > player.y) {
-            if (gradient >= 0.25 & gradient <= 0.75) {
-                anim.SetFloat("vertical", -1);
-                anim.SetFloat("horizontal", -1);
-                anim.SetBool("is_moving", true);
-                print("moving diagonal down left");
+            if (gradient >= 0.15 & gradient <= 0.85) {
+                setAnimator(-1, -1, true);
             }
 
             else {
-                anim.SetFloat("vertical", 0);
-                anim.SetFloat("horizontal", -1);
-                anim.SetBool("is_moving", true);
-                print("moving left");
+                setAnimator(0, -1, true);
             }
 
         }
 
         else if (enemy.x < player.x & enemy.y < player.y)
         {
-            if (gradient >= 0.25 & gradient <= 0.75)
+            if (gradient >= 0.15 & gradient <= 0.85)
             {
-                anim.SetFloat("vertical", 1);
-                anim.SetFloat("horizontal", 1);
-                anim.SetBool("is_moving", true);
-                print("moving diagonal right-up");
+                setAnimator(1, 1, true);
             }
 
             else
             {
-                anim.SetFloat("vertical", 0);
-                anim.SetFloat("horizontal", 1);
-                anim.SetBool("is_moving", true);
-                print("moving right");
+                setAnimator(0, 1, true);
             }
 
         }
 
         else if (enemy.x > player.x & enemy.y < player.y)
         {
-            if (gradient >= -0.25 & gradient <= -0.75)
+            if (gradient >= -0.15 & gradient <= -0.85)
             {
-                anim.SetFloat("vertical", 1);
-                anim.SetFloat("horizontal", -1);
-                anim.SetBool("is_moving", true);
-                print("moving diagonal left up");
+                setAnimator(1, -1, true);
             }
 
             else
             {
-                anim.SetFloat("vertical", 1);
-                anim.SetFloat("horizontal", 0);
-                anim.SetBool("is_moving", true);
-                print("moving up");
+                setAnimator(1, 0, true);
             }
 
         }
 
         else if (enemy.x < player.x & enemy.y > player.y)
         {
-            if (gradient >= -0.25 & gradient <= -0.75)
+            if (gradient >= -0.15 & gradient <= -0.85)
             {
-                anim.SetFloat("vertical", -1);
-                anim.SetFloat("horizontal", 1);
-                anim.SetBool("is_moving", true);
-                print("moving diagonal right down");
+                setAnimator(-1, 1, true);
             }
 
             else
             {
-                anim.SetFloat("vertical", -1);
-                anim.SetFloat("horizontal", 0);
-                anim.SetBool("is_moving", true);
-                print("moving down");
+                setAnimator(-1, 0, true);
             }
 
         }
@@ -99,7 +72,61 @@ public class EnemyMovement : MonoBehaviour
     }
 
 
+// Calcs gradient
     private float calcGradient(Vector2 player, Vector3 enemy) {
         return (enemy.y - player.y) / (enemy.x - player.x);
     }
+
+    // Sets animatorPosition
+    private void setAnimator(int v, int h, bool move) {
+        anim.SetBool("is_moving", move);
+        anim.SetFloat("vertical", v);
+        anim.SetFloat("horizontal", h);
+
+    }
+
+
+    // Calculates the attacking direction
+    public int getAttackDir(Transform player, Vector2 enemy) {
+        if ((enemy.x >= (player.position.x - 2)) || (enemy.x <= (player.position.x+2))) {
+            if (enemy.x < player.position.x) {
+                return 2;
+            }
+
+            else if (enemy.x > player.position.x) {
+                return 4;
+            }
+
+            else {
+                return -1;
+            }
+
+        }
+
+        else if ((enemy.y >= (player.position.y - 2)) || (enemy.y <= (player.position.y + 2)))
+        {
+            if (enemy.y < player.position.y)
+            {
+                return 1;
+            }
+
+            else if (enemy.y > player.position.y)
+            {
+                return 3;
+            }
+
+            else
+            {
+                return -1;
+            }
+
+        }
+
+        else {
+            return -1;
+        }
+    }
+
+
 }
+

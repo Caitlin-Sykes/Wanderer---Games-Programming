@@ -11,23 +11,54 @@ public class EnemyChase : MonoBehaviour
     private Vector3 enemy; // Variable to hold the position of the enemy
 
     public float speed;
-    void Update()
+
+    private int damage {get; set;} = 5;
+
+    // Called when "EnemyStart" is broadcasted
+    private IEnumerator EnemyStart() {
+
+        Health health = this.GetComponent<Health>();
+
+        while (health.health > 0) {
+            // Chases
+            transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+
+            // Calls animationMovement function from EnemyMovement
+            em.animationMovement(player.position, transform.position);
+
+
+            yield return null;
+            
+        }
+        
+    }
+
+    // Gets the collisions
+    private void OnTriggerEnter2D(Collider2D collide)
     {
 
-        //move towards the player
-        transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+        int attackDir = em.getAttackDir(player, transform.position);
 
-        // Calls animationMovement function from EnemyMovement
-        em.animationMovement(player.position, transform.position);
+        // print(player.transform.position);
+        // print("enem" + transform.position);
+    
+        if (attackDir != -1) {
 
-        
+            // If tag is enemy and it has health
+            if (collide.CompareTag("Player") && collide.GetComponent<Health>() != null)
+            {
+    
+                // Initialises instance
+                Health healthVar = collide.GetComponent<Health>();
+            
+                // Decrements health
+                healthVar.healthDecrement(damage);
 
-        // gets current direction
-
-
-
-
+            }
+        }
     }
+
+
 
     // // Recieves direction and moves the enemy accordingly
     // // Called from WallCollision 
@@ -37,7 +68,7 @@ public class EnemyChase : MonoBehaviour
         if (dir == 1) {
 
             // print("UpWall");
-            enemy.y -= 1;
+            enemy.y -= 2;
 
             transform.position += (enemy * speed * Time.deltaTime);
 
@@ -47,7 +78,7 @@ public class EnemyChase : MonoBehaviour
         else if (dir == 2)
         {
             // print("RightWall");
-            enemy.y -= 1;
+            enemy.y -= 2;
 
             // moves rigidbody
             transform.position += (enemy * speed * Time.deltaTime);
@@ -57,7 +88,7 @@ public class EnemyChase : MonoBehaviour
         // If dir is three (meaning bottom wall was collided) then move up
         else if (dir == 3)
         {
-            enemy.y += 1;
+            enemy.y += 2;
 
             // print("BottomWall");
 
@@ -69,7 +100,7 @@ public class EnemyChase : MonoBehaviour
         else if (dir == 4)
         {
             // print("LeftWall");
-            enemy.x += 1;
+            enemy.x += 2;
             // moves rigidbody
             transform.position += (enemy * speed * Time.deltaTime);
 
@@ -79,7 +110,13 @@ public class EnemyChase : MonoBehaviour
     // TODO: fix chasing algorithm so it chases
     // TODO: fix bouncy
     // TODO: make better
+
+
+
+
 }
+
+
 
 
 // enemy types: multiplies like rabbits
