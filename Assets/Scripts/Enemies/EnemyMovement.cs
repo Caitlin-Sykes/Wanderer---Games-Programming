@@ -18,11 +18,13 @@ public class EnemyMovement : MonoBehaviour
         // A series of if statements to determine what animation should play
         if (enemy.x > player.x & enemy.y > player.y) {
             if (gradient >= 0.20 & gradient <= 0.80) {
-                setAnimator(-1, -1, true);
+                setAnimator(0, -1, true);
+                // setAnimator(-1, -1, true);
             }
 
             else {
-                setAnimator(0, -1, true);
+                // setAnimator(0, -1, true);
+                setAnimator(-1, -1, true);
             }
 
         }
@@ -130,3 +132,6 @@ public class EnemyMovement : MonoBehaviour
 
 }
 
+// TODO: fix animations again
+// TODO: fix rebounding
+// TODO: add focus on player when too far away

@@ -6,6 +6,8 @@ public class EnemyChase : MonoBehaviour
 {
     public Transform player; // Variable to hold the position of the enemy
 
+    public PlayerMovement pmScript;
+
     public EnemyMovement em;  // Variable to hold an instance of EnemyMovement
 
     private Vector3 enemy; // Variable to hold the position of the enemy
@@ -22,18 +24,30 @@ public class EnemyChase : MonoBehaviour
 
         Health health = this.GetComponent<Health>();
 
-        while (health.health > 0) {
-            // Chases
-            transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+        while (health.health > 0)
+        {
+            if (pmScript.hide == false) {
+                    // Chases
+                    transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
 
-            // Calls animationMovement function from EnemyMovement
-            em.animationMovement(player.position, transform.position);
+                    // Calls animationMovement function from EnemyMovement
+                    em.animationMovement(player.position, transform.position);
 
 
-            yield return null;
-            
+                    yield return null;
+                }
+
+
+            else {
+                print("ping");
+                Vector2 xy = new Vector2(Random.Range(transform.position.x, player.position.x), Random.Range(transform.position.y, player.position.y));
+                transform.position = Vector2.MoveTowards(transform.position, xy, speed * Time.deltaTime);
+                // Calls animationMovement function from EnemyMovement
+                em.animationMovement(xy, transform.position);
+                yield return null;
+
+            }
         }
-        
     }
 
     // Gets the collisions

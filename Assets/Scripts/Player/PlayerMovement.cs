@@ -17,7 +17,8 @@ public class PlayerMovement : MonoBehaviour
     private bool is_moving;
 
     // hide variable
-    private bool hide;
+    // holds attack damage
+    public bool hide {get; set;} = false;
 
     // RigidBody
     public Rigidbody2D rb;
@@ -26,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     public PlayerAttacks pa;
 
     // Variable to determine attacking direction (1 - N, 2-E, 3-S, 4-W)
-    private int attackDir;
+    public int attackDir;
 
     private bool attack;
 

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System;
 public class PlayerAttacks : MonoBehaviour
 
 {
@@ -26,7 +27,6 @@ public class PlayerAttacks : MonoBehaviour
 
         if (delay == false) {
             
-            print("can enter");
             delay = true;
 
             // Inits attack box
@@ -46,14 +46,10 @@ public class PlayerAttacks : MonoBehaviour
             // Disables it again
             attackBox.SetActive(false);
 
+             delay = false;
+
             // Stops spamming of the attacks.
             yield return new WaitForSeconds(1f);
-
-            delay = false;
-        }
-
-        else {
-            print("cant enter");
         }
     }
 
@@ -67,8 +63,33 @@ public class PlayerAttacks : MonoBehaviour
             Health healthVar = collide.GetComponent<Health>();
             // Decrements health
             healthVar.healthDecrement(damage);
+
+            if (collide.GetComponent<Rigidbody2D>() != null) {
+                Vector2 collision = ((collide.transform.position - transform.position));
+
+                // an extra line of code because it randomly breaks if I do it all in one line \_o_/
+                collision = collision.normalized * 7;
+
+                collide.GetComponent<Rigidbody2D>().AddForce(collision, ForceMode2D.Impulse);
+                StartCoroutine(cancelForce(collide.GetComponent<Rigidbody2D>()));
+            }
+
             
+
         }
+
+        else {
+            return;
+        }
+    }
+
+    private IEnumerator cancelForce(Rigidbody2D target) {
+
+        print("before");
+        yield return new WaitForSeconds(1);
+        print("after");
+
+        target.velocity = Vector2.zero;
     }
 
 

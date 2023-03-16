@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 2439661963242152616}
   m_Layer: 0
   m_Name: AttackBoxU
-  m_TagString: Untagged
+  m_TagString: AttackBoxU
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6935456521489663655
 Transform:
   m_ObjectHideFlags: 0
@@ -57,9 +57,9 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.1, y: 0.35}
-      - {x: -0.1, y: 0.35}
-      - {x: 0, y: 0.5}
+    - - {x: 0.1, y: 0.3311643}
+      - {x: -0.1, y: 0.33116433}
+      - {x: -0.0012209641, y: 0.49804646}
 --- !u!1 &585736015782323090
 GameObject:
   m_ObjectHideFlags: 0
@@ -72,11 +72,11 @@ GameObject:
   - component: {fileID: 601633857444485988}
   m_Layer: 0
   m_Name: AttackBoxL
-  m_TagString: Untagged
+  m_TagString: AttackBoxL
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7438153497971284853
 Transform:
   m_ObjectHideFlags: 0
@@ -117,9 +117,9 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.1, y: 0.15}
-      - {x: -0.1, y: 0.3}
-      - {x: -0.3, y: 0.225}
+    - - {x: -0.1, y: 0.1593985}
+      - {x: -0.1, y: 0.3311643}
+      - {x: -0.3, y: 0.2452814}
 --- !u!1 &3396742259750998252
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,11 +132,11 @@ GameObject:
   - component: {fileID: 1734845475567203142}
   m_Layer: 0
   m_Name: AttackBoxD
-  m_TagString: Untagged
+  m_TagString: AttackBoxD
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8358649843353363753
 Transform:
   m_ObjectHideFlags: 0
@@ -177,8 +177,8 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.1, y: 0.15}
-      - {x: -0.1, y: 0.15}
+    - - {x: 0.1, y: 0.1593985}
+      - {x: -0.1, y: 0.15939854}
       - {x: 0, y: 0}
 --- !u!1 &8233760875098770363
 GameObject:
@@ -192,11 +192,11 @@ GameObject:
   - component: {fileID: 1761631012577299188}
   m_Layer: 0
   m_Name: AttackBoxR
-  m_TagString: Untagged
+  m_TagString: AttackBoxR
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1348082120423788954
 Transform:
   m_ObjectHideFlags: 0
@@ -237,8 +237,8 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.1, y: 0.15}
-      - {x: 0.1, y: 0.3}
+    - - {x: 0.1, y: 0.1593985}
+      - {x: 0.1, y: 0.3311643}
       - {x: 0.3, y: 0.225}
 --- !u!1 &8480444381791392743
 GameObject:
@@ -272,7 +272,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8480444381791392743}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 3}
+  m_LocalPosition: {x: -0.0334, y: 0.0551, z: 3}
   m_LocalScale: {x: 4.4748, y: 5.5935, z: 0.55935}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -411,7 +411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  changeScene: {fileID: 4906526422351682832, guid: 1acadfa2fb22466438a52fb66a1408d4, type: 3}
+  changeScene: {fileID: 5353576913100239201, guid: 1acadfa2fb22466438a52fb66a1408d4, type: 3}
   MAXHEALTH: 100
   anim: {fileID: 8480444381791392736}
 --- !u!50 &1835675658
@@ -459,5 +459,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bf8b404528aa324ab181277f1f599b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pm: {fileID: 4464705952366596360}
   ab: {fileID: -2233281864988886532}
   health: {fileID: 8238738659339195253}
