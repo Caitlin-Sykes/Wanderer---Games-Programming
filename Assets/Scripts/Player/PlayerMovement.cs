@@ -3,37 +3,24 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
-    //direction
     private Vector2 direction;
+     Animator anim; // instance of animator
 
-    // instance of animator
-     Animator anim;
-
-    // Speed 
     public float speed;
-
-    // is_moving variable
     private bool is_moving;
+    public bool hide {get; set;} = false;  // hide variable
+    Rigidbody2D rb; 
 
-    // hide variable
-    // holds attack damage
-    public bool hide {get; set;} = false;
-
-    // RigidBody
-    public Rigidbody2D rb;
-
-    // Attack Script
     public PlayerAttacks pa;
 
-    // Variable to determine attacking direction (1 - N, 2-E, 3-S, 4-W)
-    public int attackDir;
+    public int attackDir; //(1 - N, 2-E, 3-S, 4-W)
 
     private bool attack;
 
 
     void Start() {
         anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
         attack = false;
     }
 
@@ -60,8 +47,7 @@ public class PlayerMovement : MonoBehaviour
             attack = false;
             anim.SetInteger("attackDir", attackDir);
             anim.SetTrigger("Attack");
-        }
-        
+        }   
     }
 
     // Gets the player's input
@@ -132,11 +118,17 @@ public class PlayerMovement : MonoBehaviour
 
         // Hide Controls
         // press h to hide
-        if (Input.GetKey(KeyCode.H))
+        if (Input.GetKeyDown(KeyCode.H))
         {
             hide = true;
+            
         }
     }
+
+    // TODO: hiding mechanic
+    // actual stage generation
+    // enemy placements - an array of possible locations and then randomly picks enemies?
+    // TODO: bug fixing
 
     
     

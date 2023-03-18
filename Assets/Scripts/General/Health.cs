@@ -23,12 +23,13 @@ public class Health : MonoBehaviour
     void Update()
     {
         // If the health is zero and the tag is player, then game over
-        if (health < 0 && this.CompareTag("Player")) {
-            changeScene.loadScene("GameOver");
+        if (health <= 0 && this.CompareTag("Player")) {
+            SendMessageUpwards("gameOver");
+            
         }
 
         // If health is 0 and tag is enemy, destroys game object and logs to console
-        else if (health < 0 && this.CompareTag("Enemy")) {
+        else if (health <= 0 && this.CompareTag("Enemy")) {
             // Starts couroutine
             StartCoroutine(death());
         }

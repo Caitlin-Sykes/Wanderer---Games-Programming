@@ -6,7 +6,7 @@ public class EnemyMovement : MonoBehaviour
 {
     public Animator anim;
 
-    private float gradient; //a variable to hold the gradientnitude
+    private float gradient; //a variable to hold the gradient
 
     // Sets the animation movement
     public void animationMovement(Vector2 player, Vector3 enemy) {
@@ -33,12 +33,13 @@ public class EnemyMovement : MonoBehaviour
         {
             if (gradient >= 0.20 & gradient <= 0.80)
             {
-                setAnimator(1, 1, true);
+                // setAnimator(1, 1, true);
+                setAnimator(0, 1, true);
             }
 
             else
             {
-                setAnimator(0, 1, true);
+                setAnimator(1, 1, true);
             }
 
         }
@@ -47,12 +48,13 @@ public class EnemyMovement : MonoBehaviour
         {
             if (gradient >= -0.20 & gradient <= -0.20)
             {
-                setAnimator(1, -1, true);
+                setAnimator(1, 0, true);
+                // setAnimator(1, -1, true); have temp swapped to improve
             }
 
             else
             {
-                setAnimator(1, 0, true);
+                setAnimator(1, -1, true);
             }
 
         }
@@ -61,12 +63,13 @@ public class EnemyMovement : MonoBehaviour
         {
             if (gradient >= -0.20 & gradient <= -0.80)
             {
-                setAnimator(-1, 1, true);
+                setAnimator(-1, 0, true);
             }
 
             else
             {
-                setAnimator(-1, 0, true);
+                // setAnimator(-1, 0, true);
+                setAnimator(-1, 1, true);
             }
 
         }

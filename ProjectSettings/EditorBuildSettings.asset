@@ -17,9 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: 005c41169584fb240baf17734cdbef9f
-  - enabled: 1
-    path: Assets/Scenes/0 - Introduction.unity
-    guid: bf5a8dd62458b9e4c83e681f1d929a0e
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/DEMO-REMOVE_IN_FINAL_RELEASE.unity
     guid: 3b1fee0f283fcb4449167f590a6d9bc8
