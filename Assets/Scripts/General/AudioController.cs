@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioController : MonoBehaviour
@@ -14,6 +13,7 @@ public class AudioController : MonoBehaviour
         print(currentAudio);
     }
 
+    // A function to change the song
     public void changeSong(string newSong)
     {
 

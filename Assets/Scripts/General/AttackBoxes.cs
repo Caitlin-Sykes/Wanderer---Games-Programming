@@ -1,11 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackBoxes : MonoBehaviour
 {
-
-    // Initialises instance
     private Health healthVar;
     private PlayerAttacks pa;
 
@@ -38,9 +35,7 @@ public class AttackBoxes : MonoBehaviour
             // If tag is enemy and it has health
             if (collide.transform.CompareTag("Enemy") & collide.GetComponent<Health>() != null & transform.CompareTag("Player") != false)
             {
-                // Initialises instance
                 healthVar = collide.GetComponent<Health>();
-                // Decrements health
                 healthVar.healthDecrement(pa.damage); //problematic line that throws errors yet works??
 
                 if (collide.GetComponent<Rigidbody2D>() != null)
@@ -63,14 +58,11 @@ public class AttackBoxes : MonoBehaviour
 
         
     }
-
+    
+    // A function to cancel the force after a certain amount of time
     private IEnumerator cancelForce(Rigidbody2D target)
     {
-
-        print("before");
         yield return new WaitForSeconds(1);
-        print("after");
-
         target.velocity = Vector2.zero;
     }
     

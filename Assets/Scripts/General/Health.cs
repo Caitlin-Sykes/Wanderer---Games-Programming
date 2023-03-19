@@ -3,13 +3,9 @@ using System.Collections;
 
 public class Health : MonoBehaviour
 {
-    //Health
     [SerializeField] public int health;
-
-    //Instance of Change Scene
-    public ChangeScene changeScene;
-
-    //Max Health
+    
+    //Max Health 
     public int MAXHEALTH = 100;
 
     // instance of animator
@@ -39,17 +35,13 @@ public class Health : MonoBehaviour
     public void healthDecrement(int damage) {
         if (damage > 0) {
             this.health -= damage;
-            print(health);
         }
     }
 
     // Destroys the game object
     IEnumerator death() {
-        // Triggers death animation
         anim.SetTrigger("EnemyDeath");
-        // Waits
         yield return new WaitForSeconds(1f);
-        // Destroys object
         Destroy(this.gameObject);
     }
 }

@@ -1,23 +1,13 @@
 using UnityEngine;
 using System.Collections;
-using System;
 public class PlayerAttacks : AttackBoxes
 
 {
-    // To hold the attack box which determines when things are hit
-    private GameObject attackBox = default;
+    private GameObject attackBox = default;  // To hold the attack box which determines when things are hit
 
     public PlayerMovement pm;
-
-    // holds attack damage
-    public int damage {get; set;} = 2;
-
-    // holds attacking delay
-    public bool delay { get; set; } = false;
-
-    // instance of health
-    public Health health;
-
+    public int damage {get; set;} = 2; /// holds attack damage
+    public bool delay { get; set; } = false; // holds attacking delay
 
     // main attack function
     public IEnumerator mainAttack(int attackDir) {
@@ -35,15 +25,9 @@ public class PlayerAttacks : AttackBoxes
 
             pm.attackAnim();
 
-            // Waits for two seconds
             yield return new WaitForSeconds(1f);
-
-            // Disables it again
             attackBox.SetActive(false);
-
             delay = false;
-
-            // Stops spamming of the attacks.
             yield return new WaitForSeconds(1f);
         }
     }

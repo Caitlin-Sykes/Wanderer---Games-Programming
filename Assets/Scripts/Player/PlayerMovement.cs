@@ -1,20 +1,15 @@
-
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
     private Vector2 direction;
      Animator anim; // instance of animator
-
     public float speed;
     private bool is_moving;
     public bool hide {get; set;} = false;  // hide variable
     Rigidbody2D rb; 
-
     public PlayerAttacks pa;
-
     public int attackDir; //(1 - N, 2-E, 3-S, 4-W)
-
     private bool attack;
 
 
@@ -33,6 +28,8 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate() {
         rb.MovePosition((Vector2)transform.position + (direction * speed * Time.deltaTime));
     }
+
+    // Sets the animation movements
     private void setAnimatorMovement()
     {
         anim.SetFloat("vertical", direction.x);
@@ -40,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
         anim.SetBool("is_moving", is_moving);
         anim.SetBool("hide", hide);
     }
-
+    // Controls the attack animation
     public void attackAnim() {
         if (attack == true)
         {
@@ -128,7 +125,6 @@ public class PlayerMovement : MonoBehaviour
     // TODO: hiding mechanic
     // actual stage generation
     // enemy placements - an array of possible locations and then randomly picks enemies?
-    // TODO: bug fixing
 
     
     

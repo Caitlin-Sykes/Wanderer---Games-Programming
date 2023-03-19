@@ -406,7 +406,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pm: {fileID: 153634691}
-  health: {fileID: 153634690}
 --- !u!50 &153634689
 Rigidbody2D:
   serializedVersion: 4
@@ -446,7 +445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db506c24094ae944ba8db62873538185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 50
   changeScene: {fileID: 0}
   MAXHEALTH: 100
   anim: {fileID: 153634693}

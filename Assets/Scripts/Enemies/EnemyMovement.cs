@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
@@ -9,21 +7,23 @@ public class EnemyMovement : MonoBehaviour
     private float gradient; //a variable to hold the gradient
 
     // Sets the animation movement
-    public void animationMovement(Vector2 player, Vector3 enemy) {
+    public void animationMovement(Vector2 player, Vector3 enemy)
+    {
 
         gradient = (calcGradient(player, enemy));
         setAnimator(0, 0, false);
 
-       
+
         // A series of if statements to determine what animation should play
-        if (enemy.x > player.x & enemy.y > player.y) {
-            if (gradient >= 0.20 & gradient <= 0.80) {
+        if (enemy.x > player.x & enemy.y > player.y)
+        {
+            if (gradient >= 0.20 & gradient <= 0.80)
+            {
                 setAnimator(0, -1, true);
-                // setAnimator(-1, -1, true);
             }
 
-            else {
-                // setAnimator(0, -1, true);
+            else
+            {
                 setAnimator(-1, -1, true);
             }
 
@@ -33,7 +33,6 @@ public class EnemyMovement : MonoBehaviour
         {
             if (gradient >= 0.20 & gradient <= 0.80)
             {
-                // setAnimator(1, 1, true);
                 setAnimator(0, 1, true);
             }
 
@@ -49,7 +48,6 @@ public class EnemyMovement : MonoBehaviour
             if (gradient >= -0.20 & gradient <= -0.20)
             {
                 setAnimator(1, 0, true);
-                // setAnimator(1, -1, true); have temp swapped to improve
             }
 
             else
@@ -68,22 +66,23 @@ public class EnemyMovement : MonoBehaviour
 
             else
             {
-                // setAnimator(-1, 0, true);
                 setAnimator(-1, 1, true);
             }
 
         }
-       
+
     }
 
 
-// Calcs gradient
-    private float calcGradient(Vector2 player, Vector3 enemy) {
+    // Calcs gradient
+    private float calcGradient(Vector2 player, Vector3 enemy)
+    {
         return (enemy.y - player.y) / (enemy.x - player.x);
     }
 
     // Sets animatorPosition
-    private void setAnimator(int v, int h, bool move) {
+    private void setAnimator(int v, int h, bool move)
+    {
         anim.SetBool("is_moving", move);
         anim.SetFloat("vertical", v);
         anim.SetFloat("horizontal", h);
@@ -92,17 +91,22 @@ public class EnemyMovement : MonoBehaviour
 
 
     // Calculates the attacking direction
-    public int getAttackDir(Transform player, Vector2 enemy) {
-        if ((enemy.x >= (player.position.x - 2)) || (enemy.x <= (player.position.x+2))) {
-            if (enemy.x < player.position.x) {
+    public int getAttackDir(Transform player, Vector2 enemy)
+    {
+        if ((enemy.x >= (player.position.x - 2)) || (enemy.x <= (player.position.x + 2)))
+        {
+            if (enemy.x < player.position.x)
+            {
                 return 2;
             }
 
-            else if (enemy.x > player.position.x) {
+            else if (enemy.x > player.position.x)
+            {
                 return 4;
             }
 
-            else {
+            else
+            {
                 return -1;
             }
 
@@ -127,7 +131,8 @@ public class EnemyMovement : MonoBehaviour
 
         }
 
-        else {
+        else
+        {
             return -1;
         }
     }
@@ -135,6 +140,4 @@ public class EnemyMovement : MonoBehaviour
 
 }
 
-// TODO: fix animations again
-// TODO: fix rebounding
 // TODO: add focus on player when too far away
