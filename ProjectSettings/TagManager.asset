@@ -19,6 +19,7 @@ TagManager:
   - AttackBoxD
   - AttackBoxL
   - AttackBoxR
+  - Audio
   layers:
   - Default
   - TransparentFX
