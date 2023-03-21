@@ -4,6 +4,26 @@ public class WallCollision : MonoBehaviour
 {
     public EnemyChase enemy;
 
+    public float minX, maxX;
+    public float minY, maxY;  
+
+    public EdgeCollider2D box; 
+
+
+
+    void Start() {
+        getBoundaries(box);
+    }
+    private void getBoundaries(EdgeCollider2D boxy) {
+
+        minX = boxy.adjacentEndPoint.x;
+        maxX = boxy.adjacentStartPoint.x;
+
+        minY = boxy.adjacentEndPoint.y;
+        maxY = boxy.adjacentStartPoint.y;
+
+    }
+
     // on collision detection
     private void OnTriggerEnter2D(Collider2D collide)
     {

@@ -446,7 +446,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 50
-  changeScene: {fileID: 0}
   MAXHEALTH: 100
   anim: {fileID: 153634693}
 --- !u!114 &153634691
@@ -597,7 +596,7 @@ GameObject:
   m_Layer: 0
   m_Name: Main
   m_TagString: Audio
-  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1026,7 +1025,7 @@ GameObject:
   - component: {fileID: 1231397350}
   - component: {fileID: 1231397349}
   m_Layer: 0
-  m_Name: walls - layout one
+  m_Name: walls
   m_TagString: Walls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1089,10 +1088,10 @@ EdgeCollider2D:
   - {x: 9.042961, y: -3.9870334}
   - {x: 8.995182, y: 3.9970427}
   - {x: -7.979146, y: 4.0465984}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
+  m_AdjacentStartPoint: {x: -8.000185, y: 4.029077}
+  m_AdjacentEndPoint: {x: 9.042961, y: -3.987033}
+  m_UseAdjacentStartPoint: 1
+  m_UseAdjacentEndPoint: 1
 --- !u!114 &1231397350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1106,6 +1105,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 1711225662}
+  minX: 0
+  maxX: 0
+  minY: 0
+  maxY: 0
+  box: {fileID: 1231397349}
 --- !u!483693784 &1231397351
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -2134,6 +2138,7 @@ MonoBehaviour:
   pmScript: {fileID: 153634691}
   em: {fileID: 1711225663}
   speed: 3
+  wc: {fileID: 1231397350}
 --- !u!114 &1711225663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2209,7 +2214,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
-  changeScene: {fileID: 0}
   MAXHEALTH: 10
   anim: {fileID: 1711225664}
 --- !u!61 &1711225667

@@ -10,7 +10,6 @@ public class AudioController : MonoBehaviour
     
     void Awake() {
         changeSong("Main");
-        print(currentAudio);
     }
 
     // A function to change the song

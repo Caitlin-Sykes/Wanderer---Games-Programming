@@ -1,39 +1,42 @@
 using System.Collections;
 using UnityEngine;
 
-public class EnemyChase : MonoBehaviour
+public class EnemyChase : EnemyMovement
 
 {
-    public Transform player; // Variable to hold the position of the enemy
+    public Transform player; // Variable to hold the position of the player
 
     public PlayerMovement pmScript;
-
-    public EnemyMovement em;  // Variable to hold an instance of EnemyMovement
 
     private Vector3 enemy; // Variable to hold the position of the enemy
 
     public float speed;
+
+    private Vector3 xy; //for random coords
 
     private int damage { get; set; } = 5;
 
     // holds attack damage
     private bool invinceFrame { get; set; } = false;
 
+    public WallCollision wc;
+
     // Called when "EnemyStart" is broadcasted
     private IEnumerator EnemyStart()
     {
 
         Health health = this.GetComponent<Health>();
-
+        randomCoOrds();
+        float duration = 5;
         while (health.health > 0)
         {
             if (pmScript.hide == false)
             {
                 // Chases
-                transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, player.position, (speed * Time.deltaTime));
 
                 // Calls animationMovement function from EnemyMovement
-                em.animationMovement(player.position, transform.position);
+                 animationMovement(player.position, transform.position);
 
 
                 yield return null;
@@ -42,11 +45,19 @@ public class EnemyChase : MonoBehaviour
 
             else
             {
-                Vector2 xy = new Vector2(Random.Range(transform.position.x, player.position.x), Random.Range(transform.position.y, player.position.y));
-                print("Random Co-Ords: " + xy);
-                transform.position = Vector2.MoveTowards(transform.position, xy, speed * Time.deltaTime);
+                duration -= Time.deltaTime;
+                if (duration % 5 ==0) {
+                    randomCoOrds();
+                    duration = 5;
+                                    }
+
+                else if ((transform.position) == xy) {
+                    randomCoOrds();
+
+                }
+                transform.position = Vector2.MoveTowards(transform.position, xy, (speed * Time.deltaTime));
                 // Calls animationMovement function from EnemyMovement
-                em.animationMovement(xy, transform.position);
+                animationMovement(xy, transform.position);
                 yield return null;
 
             }
@@ -57,11 +68,10 @@ public class EnemyChase : MonoBehaviour
     private IEnumerator OnTriggerEnter2D(Collider2D collide)
     {
 
-        if (em.getAttackDir(player, transform.position) != -1 && invinceFrame != true)
+        // If tag is enemy and it has health
+        if (collide.CompareTag("Player") && collide.GetComponent<Health>() != null)
         {
-
-            // If tag is enemy and it has health
-            if (collide.CompareTag("Player") && collide.GetComponent<Health>() != null)
+            if (getAttackDir(player, transform.position) != -1 && invinceFrame != true)
             {
                 // Initialises instance
                 Health healthVar = collide.GetComponent<Health>();
@@ -69,11 +79,23 @@ public class EnemyChase : MonoBehaviour
                 // Decrements health
                 healthVar.healthDecrement(damage);
 
+
+                if (pmScript.hide == true)
+                {
+                    pmScript.hide = false;
+                }
+
                 invinceFrame = true;
                 yield return new WaitForSeconds(2);
                 invinceFrame = false;
 
+            
+
             }
+        }
+
+        else if (collide.CompareTag("Walls") && pmScript.hide == true)  {
+            randomCoOrds();
         }
 
         else
@@ -123,10 +145,11 @@ public class EnemyChase : MonoBehaviour
 
 
 
+
+private void randomCoOrds() {
+    xy = new Vector2(Random.Range(wc.minX, wc.maxX), Random.Range(wc.minY, wc.maxY));
 }
-
-
-
+}
 
 //TODO: more enemy types
 //  enemy types: multiplies like rabbits
