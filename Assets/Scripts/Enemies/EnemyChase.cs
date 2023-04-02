@@ -30,7 +30,7 @@ public class EnemyChase : EnemyMovement
         float duration = 5;
         while (health.health > 0)
         {
-            if (pmScript.hide == false)
+            if (pmScript.state == PlayerMovement.State.Moving || pmScript.state == PlayerMovement.State.Idle)
             {
                 // Chases
                 transform.position = Vector2.MoveTowards(transform.position, player.position, (speed * Time.deltaTime));
@@ -80,9 +80,9 @@ public class EnemyChase : EnemyMovement
                 healthVar.healthDecrement(damage);
 
 
-                if (pmScript.hide == true)
+                if (pmScript.state == PlayerMovement.State.Hiding)
                 {
-                    pmScript.hide = false;
+                    pmScript.state = PlayerMovement.State.Moving;
                 }
 
                 invinceFrame = true;
@@ -94,7 +94,11 @@ public class EnemyChase : EnemyMovement
             }
         }
 
-        else if (collide.CompareTag("Walls") && pmScript.hide == true)  {
+        else if (collide.CompareTag("Walls") && pmScript.state == PlayerMovement.State.Hiding)  {
+            randomCoOrds();
+        }
+
+        else if (collide.CompareTag("Enemy") && pmScript.state == PlayerMovement.State.Hiding)  {
             randomCoOrds();
         }
 
