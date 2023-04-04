@@ -15,7 +15,7 @@ public class Health : MonoBehaviour
     public Animator anim;
 
     // Event
-    public UnityEvent playerHit;
+    public UnityEvent hit;
 
     void start()
     {
@@ -46,11 +46,7 @@ public class Health : MonoBehaviour
         if (damage > 0)
         {
             this.health -= damage;
-            if (this.CompareTag("Player"))
-            {
-                playerHit.Invoke();
-
-            }
+            hit.Invoke();
         }
     }
 
