@@ -33,10 +33,12 @@ public class AttackBoxes : MonoBehaviour
     {
 
             // If tag is enemy and it has health
-            if (collide.transform.CompareTag("Enemy") & collide.GetComponent<Health>() != null & transform.CompareTag("Player") != false)
+            if (collide.transform.CompareTag("Enemy") && collide.GetComponent<Health>() != null && transform.CompareTag("Player") != false)
             {
+                print("is being called");
                 healthVar = collide.GetComponent<Health>();
                 healthVar.healthDecrement(pa.damage); //problematic line that throws errors yet works??
+                pa.attackBox.SetActive(false);
 
                 if (collide.GetComponent<Rigidbody2D>() != null)
                 {

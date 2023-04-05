@@ -3,19 +3,20 @@ using System.Collections;
 public class PlayerAttacks : AttackBoxes
 
 {
-    private GameObject attackBox = default;  // To hold the attack box which determines when things are hit
+    public GameObject attackBox = default;  // To hold the attack box which determines when things are hit
 
     public PlayerMovement pm;
-    public int damage {get; set;} /// holds attack damage
+    
     public bool delay { get; set; } = false; // holds attacking delay
+
+    public int damage { get; set; } = 3; // holds attacking delay
 
     // main attack function
     public IEnumerator mainAttack(int attackDir, int dmg) {
 
-        damage = dmg;
         if (delay == false)
         {
-            print("in the attacking loop");
+            this.damage = dmg;
 
             delay = true;
 
@@ -28,7 +29,11 @@ public class PlayerAttacks : AttackBoxes
             attackBox.SetActive(true);
 
             yield return new WaitForSeconds(1f);
-            attackBox.SetActive(false);
+
+            if (attackBox.activeInHierarchy == true) {
+                attackBox.SetActive(false);
+
+            }
             delay = false;
             yield return new WaitForSeconds(1f);
         }
