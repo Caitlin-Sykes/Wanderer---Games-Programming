@@ -1,21 +1,24 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Events;
+using UnityEngine.AI;
+
 
 public class Health : MonoBehaviour
 {
-    // Player Health
-    [SerializeField] private int health;
+    [SerializeField] public int health;
 
-    //Instance of Change Scene
-    public ChangeScene changeScene;
-
-    //Max Health
+    //Max Health 
     public int MAXHEALTH = 100;
 
     // instance of animator
     public Animator anim;
 
-    void start() {
+    // Event
+    public UnityEvent hit;
+
+    void start()
+    {
         this.health = MAXHEALTH;
     }
 
@@ -23,36 +26,36 @@ public class Health : MonoBehaviour
     void Update()
     {
         // If the health is zero and the tag is player, then game over
-        if (health < 0 && this.CompareTag("Player")) {
-            changeScene.loadScene("GameOver");
+        if (health <= 0 && this.CompareTag("Player"))
+        {
+            SendMessageUpwards("gameOver");
+
         }
 
         // If health is 0 and tag is enemy, destroys game object and logs to console
-        else if (health < 0 && this.CompareTag("Enemy")) {
+        else if (health <= 0 && this.CompareTag("Enemy"))
+        {
             // Starts couroutine
             StartCoroutine(death());
-            print("You are dead, so very dead, enemy dead");
         }
     }
 
     // a function to decrement health
-    public void healthDecrement(int damage) {
-        if (damage > 0) {
+    public void healthDecrement(int damage)
+    {
+        if (damage > 0)
+        {
             this.health -= damage;
-            print(health);
+            hit.Invoke();
         }
     }
 
     // Destroys the game object
-    IEnumerator death() {
-        // Triggers death animation
+    IEnumerator death()
+    {
         anim.SetTrigger("EnemyDeath");
-        // Waits
         yield return new WaitForSeconds(1f);
-        // Destroys object
         Destroy(this.gameObject);
     }
 }
-
-// TODO: add some AI for enemies
 

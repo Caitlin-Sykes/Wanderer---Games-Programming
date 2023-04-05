@@ -1,142 +1,236 @@
-
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
-    //direction
     private Vector2 direction;
-
-    // instance of animator
-     Animator anim;
-
-    // Speed 
+    Animator anim; // instance of animator
     public float speed;
-
-    // is_moving variable
-    private bool is_moving;
-
-    // hide variable
-    private bool hide;
-
-    // RigidBody
-    public Rigidbody2D rb;
-
-    // Attack Script
+    Rigidbody2D rb;
     public PlayerAttacks pa;
 
-    // Variable to determine attacking direction (1 - N, 2-E, 3-S, 4-W)
-    public int attackDir;
+    public PlayerHide ph;
+    public enum AttackDir { N, E, S, W, NA }; //(NA = not attacking)
+    public AttackDir attackDir = AttackDir.NA;
+    public enum State { Moving, Hiding, Idle };
+    public State state = State.Idle;
 
-    private bool attack;
-
-
-    void Start() {
+    void Start()
+    {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        attack = false;
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
         getPlayerInput();
         setAnimatorMovement();
     }
 
-    void FixedUpdate() {
+    void FixedUpdate()
+    {
         rb.MovePosition((Vector2)transform.position + (direction * speed * Time.deltaTime));
     }
+
+    // Sets the animation movements
     private void setAnimatorMovement()
     {
         anim.SetFloat("vertical", direction.x);
         anim.SetFloat("horizontal", direction.y);
-        anim.SetBool("is_moving", is_moving);
-        anim.SetBool("hide", hide);
 
-        if (attack == true) {
-            attack = false;
-            anim.SetInteger("attackDir", attackDir);
+        if (state == State.Moving)
+        {
+            anim.SetBool("is_moving", true);
+            anim.SetBool("hide", false);
+        }
+
+        else if (state == State.Hiding)
+        {
+            anim.SetBool("hide", true);
+            anim.SetBool("is_moving", false);
+        }
+
+        else if (state == State.Idle) 
+        {
+            anim.SetBool("is_moving", false);
+            anim.SetBool("hide", false);
+        }
+
+        else {
+            anim.SetBool("is_moving", true);
+            anim.SetBool("hide", false);
+            state = State.Moving;
+        }
+    }
+    // Controls the attack animation
+    public void attackAnim()
+    {
+        convertCTI();
+
+        if (state == State.Moving || state == State.Idle)
+        {
             anim.SetTrigger("Attack");
+            state = State.Moving;
+
+        }
+
+        else if (state == State.Hiding)
+        {
+
+
+            state = State.Moving;
+            anim.SetTrigger("unhideAttack");
 
         }
     }
 
     // Gets the player's input
-    private void getPlayerInput() {
+    private void getPlayerInput()
+    {
 
         direction = Vector2.zero;
-        is_moving = false;
+
+        if (state != State.Hiding)
+        {
+            state = State.Idle;
+        }
 
         // Movement Keys (WASD)
         // If statements not else if so can move diagonal
         // Move up
-        if (Input.GetKey(KeyCode.W)) {
+        if (Input.GetKey(KeyCode.W))
+        {
             direction += Vector2.up;
-            is_moving = true;
-            hide = false;
+            checkHide(false);
 
         }
         // move left
-        if (Input.GetKey(KeyCode.A)) {
+        if (Input.GetKey(KeyCode.A))
+        {
             direction += Vector2.left;
-            is_moving = true;
-            hide = false;
+            checkHide(false);
         }
 
         //move down
-        if (Input.GetKey(KeyCode.S)) {
+        if (Input.GetKey(KeyCode.S))
+        {
 
             direction += Vector2.down;
-            is_moving = true;
-            hide = false;
+            checkHide(false);
+
         }
 
         // move right
-        if ((Input.GetKey(KeyCode.D))) {
+        if ((Input.GetKey(KeyCode.D)))
+        {
             direction += Vector2.right;
-            is_moving = true;
-            hide = false;
+            checkHide(false);
         }
 
         // Attack Controls
         // Up, Down, Left, Right Arrows
-        if (Input.GetKeyDown(KeyCode.UpArrow)) {
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            attackDir = AttackDir.N;
+            checkHide(true);
+        }
 
-            attackDir = 1;
-            attack = true;
-            StartCoroutine(pa.mainAttack(attackDir));
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            attackDir = AttackDir.S;
+            checkHide(true);
         }
-        
-        if (Input.GetKeyDown(KeyCode.DownArrow)) {
 
-            attackDir = 3;
-            attack = true;
-            StartCoroutine(pa.mainAttack(attackDir)); ;
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+
+            attackDir = AttackDir.W;
+            checkHide(true);
         }
-        
-        if (Input.GetKeyDown(KeyCode.LeftArrow)) {
-            attackDir = 4;
-            attack = true;
-            StartCoroutine(pa.mainAttack(attackDir));
-        }
-        
+
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            attackDir = 2;
-            attack = true;
-            StartCoroutine(pa.mainAttack(attackDir));
+            attackDir = AttackDir.E;
+            checkHide(true);
         }
 
         // Hide Controls
         // press h to hide
-        if (Input.GetKey(KeyCode.H))
+        if (Input.GetKeyDown(KeyCode.H))
         {
-            hide = true;
+            state = State.Hiding;
+
         }
     }
 
-    
-    
+    //checkHide is used to call different functions depending on whether Moss is hiding or not.
+    private void checkHide(bool attack) {
 
-    
-}
+        if (attack == false) {
+            
+            if (state == State.Hiding)
+            {
+                anim.SetTrigger("unhide");
+            }
+
+            state = State.Moving;
+        }
+
+        else {
+
+            int dir = convertCTI();
+            // If attack is true and state is hiding
+            if (state == State.Hiding) {
+                
+                    anim.SetBool("hide", false);
+                    anim.SetTrigger("unhideAttack");
+                    state = State.Moving;
+                    ph.hideAttack(dir);
+            }
+
+            else {
+
+                StartCoroutine(pa.mainAttack(dir, 3));
+                state = State.Moving;
+            }
+        }
+
+
+
+        }
+
+        private int convertCTI() {
+
+        switch (attackDir)
+        {
+            case AttackDir.N:
+                anim.SetInteger("attackDir", 1);
+                return 1;
+            case AttackDir.E:
+                anim.SetInteger("attackDir", 2);
+                return 2;
+            case AttackDir.S:
+                anim.SetInteger("attackDir", 3);
+                return 3;
+            case AttackDir.W:
+                anim.SetInteger("attackDir", 4);
+                return 4;
+            default:
+                break;
+
+        }
+
+            return -1;
+        }
+
+    }
+
+    // TODO: hiding mechanic
+    // actual stage generation
+    // enemy placements - an array of possible locations and then randomly picks enemies?
+    // TODO: when player hit, tint sprite red, then back to normal
+
+
+
+
+

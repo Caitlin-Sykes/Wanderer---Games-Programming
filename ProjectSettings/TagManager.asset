@@ -9,9 +9,17 @@ TagManager:
   - Doors
   - Decor
   - Water
-  - Collideable Decor
   - ScreenTransition
   - Enemy
+  - Bones
+  - Bed
+  - Trees
+  - Rocks
+  - AttackBoxU
+  - AttackBoxD
+  - AttackBoxL
+  - AttackBoxR
+  - Audio
   layers:
   - Default
   - TransparentFX
