@@ -3,149 +3,154 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Room : MonoBehaviour {
-    public string RoomName { get; set; } //name of the room
-    public string PossibleDirections { get; set; } //possible directions
+// public class Room : MonoBehaviour {
+//     public string RoomName { get; set; } //name of the room
+//     public string PossibleDirections { get; set; } //possible directions
 
-    public string Type { get; set; } //type of room (start, end etc)
+//     public string Type { get; set; } //type of room (start, end etc)
 
-    public Vector3 Position { get; set; } //position of room (start, end etc)
+//     public Vector3 Position { get; set; } //position of room (start, end etc)
 
-    ///Constructor.
-    public Room(string roomName, string possibleDirections, string type, Vector3 position) {
-        RoomName = roomName;
-        PossibleDirections = possibleDirections;
-        Type = type;
-        Position = position;
-    }
+//     ///Constructor.
+//     public Room(string roomName, string possibleDirections, string type, Vector3 position) {
+//         RoomName = roomName;
+//         PossibleDirections = possibleDirections;
+//         Type = type;
+//         Position = position;
+//     }
 
     
-}
+// } //maybe can be removed, will see
 public class LevelGen : MonoBehaviour
 {
 
-    public List<GameObject> potentialStarts;
-    private GameObject startLoc;
+    private GridController gc;
 
-    private Room startingRoom;
-    public GameObject[] rooms;
+    public GameObject[] layouts;
 
-    public Transform RoomPar;
-
-    private Room previousRoom;
+    private int previousRoom;
 
     // Start is called before the first frame update
     void Start()
     {
-        generateStartLocation();
-
-        // mainPath();
-
+        gc = this.GetComponent<GridController>();
 
         
     }
 
     // A function to generate the start location
-    // Doesn't quite work as intended, but can be worked with.
-   private void generateStartLocation() {
+   public void generateStartLocation() {
   
+        // Stores the current poisition in list
+        int index = Random.Range(0, gc.rooms.Count);
+
+        print(index);
+        
         // Gets random start from the list of potential start locations
-        startLoc = potentialStarts[Random.Range(0, potentialStarts.Count)];
-        // BoxCollider2D boxy = startLoc.GetComponent<BoxCollider2D>(); 
+        GameObject startLoc = gc.rooms[index];
+        
+        newRoom(startLoc, index);
+   }
 
-        // Gets random room layout to start in
-        GameObject startRoom = rooms[Random.Range(0, rooms.Length)];
-        startingRoom = new Room("start", startRoom.tag, "start", startLoc.transform.position);
-        print(startLoc.transform.position);
-  
-        GameObject room = Instantiate(startRoom, Vector3.zero, Quaternion.identity, startLoc.transform);
-   
+    //A function to create a new room
+    // nl = the room to be replaced
+    // index = position in the list of rooms
+   private void newRoom(GameObject nl, int index) {
+        
+        GameObject room = Instantiate(generateRoomLayout(), nl.transform.position, Quaternion.identity, nl.transform.parent);
 
-
-        // RoomPar.transform.position = boxy.transform.position;
-
-        previousRoom = startingRoom;
-
+        Destroy(nl); //removes old room
+        room.name = index.ToString(); 
+        gc.rooms[index] = room;
+        previousRoom = index;
+    
 
    }
 
-   private void mainPath() {
-        string possibleDirections = previousRoom.PossibleDirections;
+
+
+    //Generates room layout
+   private GameObject generateRoomLayout() {
+    return layouts[Random.Range(0, layouts.Length)] as GameObject;
+   }
+
+//    private void mainPath() {
+//         string possibleDirections = previousRoom.PossibleDirections;
         
-        // random char
-        int i = Random.Range(0, possibleDirections.Length);
-        char dir = possibleDirections[i];
-        print("random direction: " + dir);
-        //going up - +10 to y
-        //going down -10 to y
-        // left -10 to x
-        // right +10 to x
+//         // random char
+//         int i = Random.Range(0, possibleDirections.Length);
+//         char dir = possibleDirections[i];
+//         print("random direction: " + dir);
+//         //going up - +10 to y
+//         //going down -10 to y
+//         // left -10 to x
+//         // right +10 to x
 
-        Vector3 position;
-        GameObject room;
-        //new coords
-        if (dir == 'U') {
-            position = transform.TransformPoint(Vector3.up * 40);
-            // Gets random room layout to start in
-            room = rooms[Random.Range(0, rooms.Length)];
-            position = previousRoom.Position + position;
-
-
-            print(position);
-            previousRoom = new Room("second", room.tag, "second", position);
-            Instantiate(room, position, Quaternion.identity, RoomPar);
-        }
-
-        else if (dir == 'D') {
-            position = transform.TransformPoint(Vector3.down * 40);
-            // Gets random room layout to start in
-            room = rooms[Random.Range(0, rooms.Length)];
+//         Vector3 position;
+//         GameObject room;
+//         //new coords
+//         if (dir == 'U') {
+//             position = transform.TransformPoint(Vector3.up * 40);
+//             // Gets random room layout to start in
+//             room = rooms[Random.Range(0, rooms.Length)];
+//             position = previousRoom.Position + position;
 
 
-            print(position);
-            position = previousRoom.Position + position;
-            previousRoom = new Room("second", room.tag, "second", position);
-            Instantiate(room, position, Quaternion.identity, RoomPar);
-        }
+//             print(position);
+//             previousRoom = new Room("second", room.tag, "second", position);
+//             Instantiate(room, position, Quaternion.identity, RoomPar);
+//         }
 
-        else if (dir == 'L') {
-
-            position = transform.TransformPoint(Vector3.left * 40);
-            // Gets random room layout to start in
-            room = rooms[Random.Range(0, rooms.Length)];
+//         else if (dir == 'D') {
+//             position = transform.TransformPoint(Vector3.down * 40);
+//             // Gets random room layout to start in
+//             room = rooms[Random.Range(0, rooms.Length)];
 
 
-            print(position);
-            position = previousRoom.Position + position;
-            previousRoom = new Room("second", room.tag, "second", position);
-            Instantiate(room, position, Quaternion.identity, RoomPar);
-        }
+//             print(position);
+//             position = previousRoom.Position + position;
+//             previousRoom = new Room("second", room.tag, "second", position);
+//             Instantiate(room, position, Quaternion.identity, RoomPar);
+//         }
 
-        else if (dir == 'R')
-        {
-            position = transform.TransformPoint(Vector3.right * 40);
-            // Gets random room layout to start in
-            room = rooms[Random.Range(0, rooms.Length)];
+//         else if (dir == 'L') {
 
-            position = previousRoom.Position + position;
+//             position = transform.TransformPoint(Vector3.left * 40);
+//             // Gets random room layout to start in
+//             room = rooms[Random.Range(0, rooms.Length)];
 
 
-            print(position);
-            previousRoom = new Room("second", room.tag, "second", position);
-            Instantiate(room, position, Quaternion.identity, RoomPar);
-        }
+//             print(position);
+//             position = previousRoom.Position + position;
+//             previousRoom = new Room("second", room.tag, "second", position);
+//             Instantiate(room, position, Quaternion.identity, RoomPar);
+//         }
+
+//         else if (dir == 'R')
+//         {
+//             position = transform.TransformPoint(Vector3.right * 40);
+//             // Gets random room layout to start in
+//             room = rooms[Random.Range(0, rooms.Length)];
+
+//             position = previousRoom.Position + position;
+
+
+//             print(position);
+//             previousRoom = new Room("second", room.tag, "second", position);
+//             Instantiate(room, position, Quaternion.identity, RoomPar);
+//         }
                 
         
 
-        // // Gets random room layout to start in
-        // room = rooms[Random.Range(0, rooms.Length)];
+//         // // Gets random room layout to start in
+//         // room = rooms[Random.Range(0, rooms.Length)];
 
 
-        // print(position);
-        // previousRoom = new Room("second", room.tag, "second", position);
-        // Instantiate(room, position, Quaternion.identity, RoomPar);
+//         // print(position);
+//         // previousRoom = new Room("second", room.tag, "second", position);
+//         // Instantiate(room, position, Quaternion.identity, RoomPar);
 
 
         
-   }
+//    }
 }

@@ -1,39 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GridController : MonoBehaviour
 {
-    private int row = 10;
-    private int col = 10;
-
+    public List<GameObject> rooms = new List<GameObject>();
     public GameObject tile;
-    void Start()
-    {
-        genGrid();
+
+    public UnityEvent startGen;
+
+    void Start() {
+        startGen.Invoke();
     }
-
-
-    // Update is called once per frame
-    private void genGrid()
+ 
+    // Generates an empty grid and adds to rooms list
+    public void genGrid()
     {
-
-        // for (int e = 0; e < 10; e++)
-        // {
-            for (int r = 0; r < row; r++)
-                for (int c = 0; c < col; c++)
-                {
-                    GameObject temp = Instantiate(tile, transform);
-                    temp.transform.position = new Vector2(c * 10, r * -10);
-                    // if (c > 1) {
-                    //     // temp.transform.position = new Vector2(c*10,r*-10);
-                    // }
-
-
-
-                }
-        // }
-        Destroy(tile);
+        for (int r = 0; r < 10; r++)
+            for (int c = 0; c < 10; c++)
+            {
+                GameObject temp = Instantiate(tile, transform);
+                string t = (r.ToString() + c.ToString());
+                temp.name = t;
+                temp.transform.position = new Vector2(c * 10, r * -10);
+                rooms.Add(temp);
+            }
+        
     }
 
 
