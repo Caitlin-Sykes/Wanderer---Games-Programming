@@ -20,6 +20,14 @@ TagManager:
   - AttackBoxL
   - AttackBoxR
   - Audio
+  - Spawn Point
+  - LR
+  - UD
+  - AD
+  - ULR
+  - U
+  - 1D
+  - ER
   layers:
   - Default
   - TransparentFX
