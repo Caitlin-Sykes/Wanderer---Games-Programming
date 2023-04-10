@@ -23,11 +23,17 @@ TagManager:
   - Spawn Point
   - LR
   - UD
-  - AD
   - ULR
   - U
-  - 1D
   - ER
+  - UDLR
+  - L
+  - DL
+  - D
+  - DR
+  - UL
+  - UR
+  - R
   layers:
   - Default
   - TransparentFX
