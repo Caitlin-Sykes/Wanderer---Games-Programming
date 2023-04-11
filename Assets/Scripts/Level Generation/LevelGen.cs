@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class LevelGen : MonoBehaviour
 {
@@ -10,14 +11,14 @@ public class LevelGen : MonoBehaviour
 
     private int previousRoom;
 
-    private bool firstRun {get; set;} = true;
+    private bool firstRun { get; set; } = true;
 
     // A function to generate the start location
     public void generateStartLocation()
     {
         // Stores the current poisition in list
         int index = Random.Range(0, gc.rooms.Count);
-
+        print("START INDEX HERE: " + index);
         // Gets random start from the list of potential start locations
         GameObject startLoc = gc.rooms[index];
 
@@ -30,32 +31,32 @@ public class LevelGen : MonoBehaviour
     private void newRoom(GameObject nl, int index)
     {
         GameObject layout = generateRoomLayout();
-        print(layout.tag);
 
         // While it doesn't fit the conditions
-        while (placementValidation(layout, index) == false)
+        while (
+            placementValidation(layout, index) == false || checkPreviousRoom(layout, index) == false
+        )
         {
-            if (firstRun == true) {
-                layout = generateRoomLayout();
+            // If length of tag = 1, means it is one of the rooms with only one exit
+            if (
+                firstRun == true
+                && placementValidation(layout, index) == true
+                && layout.tag.Length != 1
+            )
+            {
                 firstRun = false;
-                print("first run");
+                break;
             }
-
-            else {
-                if (checkPreviousRoom(layout) == false) {
-                    layout = generateRoomLayout();
-                }
-
-                else {
-                    print("true");
-                    break;
-                }
+            else if (firstRun == false)
+            {
+                layout = generateRoomLayout();
+                print("not first run");
+                continue;
             }
-            // StartCoroutine(checkPreviousRoom(layout));
-
-            // else if (firstRun == false && checkPreviousRoom(layout) == false) {
-            //     layout = generateRoomLayout();
-            // }
+            else
+            {
+                layout = generateRoomLayout();
+            }
         }
 
         GameObject room = Instantiate(
@@ -87,7 +88,7 @@ public class LevelGen : MonoBehaviour
         char dir = prevRoom.tag[Random.Range(0, prevRoom.tag.Length)];
 
         int index;
-        print(dir);
+
         while (dir != -1)
         {
             try
@@ -101,20 +102,28 @@ public class LevelGen : MonoBehaviour
                 else if (dir == 'D' && !banned.Contains('D'))
                 {
                     index = previousRoom + 10;
+                    print("cookie 2");
                     newRoom(gc.rooms[index], index);
                     break;
                 }
                 else if (dir == 'L' && !banned.Contains('L'))
                 {
                     index = previousRoom - 1;
+                    print("cookie 3");
                     newRoom(gc.rooms[index], index);
                     break;
                 }
                 else if (dir == 'R' && !banned.Contains('R'))
                 {
                     index = previousRoom + 1;
+                    print("cookie 4");
                     newRoom(gc.rooms[index], index);
                     break;
+                }
+                else
+                {
+                    banned.Add(dir);
+                    dir = prevRoom.tag[Random.Range(0, prevRoom.tag.Length)];
                 }
             }
             catch
@@ -139,17 +148,14 @@ public class LevelGen : MonoBehaviour
             {
                 return false;
             }
-            print("wrong5");
         }
         else if (ind == 9)
         {
             // cannot be up or right
             if (layout.tag.Contains("U") || layout.tag.Contains("R"))
             {
-                print("ping");
                 return false;
             }
-            print("wrong6");
         }
         else if (ind == 90)
         {
@@ -158,7 +164,6 @@ public class LevelGen : MonoBehaviour
             {
                 return false;
             }
-            print("wrong7");
         }
         else if (ind == 99)
         {
@@ -167,7 +172,6 @@ public class LevelGen : MonoBehaviour
             {
                 return false;
             }
-            print("wrong8");
         }
         // 0, 9, 90, & 99 are the corner boxes in the 10x10 grid.
         //
@@ -180,7 +184,6 @@ public class LevelGen : MonoBehaviour
                 {
                     return false;
                 }
-                print("wrong");
             }
             //This equates to the bottom row
             else if (ind >= 91 && ind <= 98)
@@ -189,7 +192,6 @@ public class LevelGen : MonoBehaviour
                 {
                     return false;
                 }
-                print("wrong2");
             }
             else if (ind.ToString().Contains("0"))
             {
@@ -197,14 +199,11 @@ public class LevelGen : MonoBehaviour
                 {
                     return false;
                 }
-                print("wrong3");
             }
             else if (ind.ToString().Contains("9"))
             {
                 if (layout.tag.Contains("R"))
                 {
-                    print("wrong4");
-
                     return false;
                 }
             }
@@ -214,64 +213,50 @@ public class LevelGen : MonoBehaviour
     }
 
     //checks previous room to make sure paths connect
-    private bool checkPreviousRoom(GameObject layout) {
-        
+    private bool checkPreviousRoom(GameObject layout, int ind)
+    {
         // if the previous room doesn't have the corresponding direction
         //so if previous room doesn't have left in its tag, and the new room has right, recalculate
-        if (gc.rooms[previousRoom].tag.Contains("L") && layout.tag.Contains("R")) {
+        if (
+            layout.tag.Contains("L")
+            && gc.rooms[previousRoom].tag.Contains("R")
+            && ind == previousRoom + 1
+        )
+        {
             // can't happen
             print("a");
             return true;
         }
-
-        else if (gc.rooms[previousRoom].tag.Contains("R") && layout.tag.Contains("L")) {
+        else if (
+            layout.tag.Contains("R")
+            && gc.rooms[previousRoom].tag.Contains("L")
+            && ind == previousRoom - 1
+        )
+        {
             return true;
         }
-
-        else if (gc.rooms[previousRoom].tag.Contains("U") && layout.tag.Contains("D")) {
+        else if (
+            gc.rooms[previousRoom].tag.Contains("U")
+            && layout.tag.Contains("D")
+            && ind == previousRoom - 10
+        )
+        {
             print("ae2");
             return true;
         }
-
-        else if (gc.rooms[previousRoom].tag.Contains("D") && layout.tag.Contains("U")) {
+        else if (
+            gc.rooms[previousRoom].tag.Contains("D")
+            && layout.tag.Contains("U")
+            && ind == previousRoom + 10
+        )
+        {
             print("ae3");
             return true;
         }
-
-        else {
+        else
+        {
             print("ae4");
             return false;
         }
-
     }
-
-    // IEnumerator checkPreviousRoom(GameObject layout) {
-        
-    //     // if the previous room doesn't have the corresponding direction
-    //     //so if previous room doesn't have left in its tag, and the new room has right, recalculate
-    //     if (gc.rooms[previousRoom].tag.Contains("L") && layout.tag.Contains("R")) {
-    //         // can't happen
-    //         print("true");
-    //         // return true;
-    //     }
-
-    //     else if (gc.rooms[previousRoom].tag.Contains("R") && layout.tag.Contains("L")) {
-    //         print("true");
-    //     }
-
-    //     else if (gc.rooms[previousRoom].tag.Contains("U") && layout.tag.Contains("D")) {
-    //         print("true");
-    //     }
-
-    //     else if (gc.rooms[previousRoom].tag.Contains("D") && layout.tag.Contains("U")) {
-    //         print("true");
-    //         print("true");
-    //     }
-
-    //     else {
-    //         print("false");
-    //         yield return null;
-    //     }
-
-    // }
 }
