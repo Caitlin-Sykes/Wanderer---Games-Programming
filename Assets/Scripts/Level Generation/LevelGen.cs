@@ -1,17 +1,24 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.IO;
 
 public class LevelGen : MonoBehaviour
 {
     public GridController gc;
 
-    public GameObject[] layouts;
+    public GameObject[] layouts; //all layouts excluding ends
 
-    private int previousRoom;
+    public GameObject[] endLayouts; //all rooms that only have one exit/entrance
 
-    private bool firstRun { get; set; } = true;
+    private int previousRoom; // the previous room generated
+
+    private bool firstRun { get; set; } = true; //if first run of generation
+
+    private int mainPathLength { get; set; } // the length of the main path
+
+    void Start()
+    {
+        mainPathLength = Random.Range(6, 9);
+    }
 
     // A function to generate the start location
     public void generateStartLocation()
@@ -72,72 +79,136 @@ public class LevelGen : MonoBehaviour
         previousRoom = index;
     }
 
-    //Generates room layout
+    // A function to create a new end room;
+    //@param: index - position in the list of rooms
+    private void newRoom(int index)
+    {
+        print("Last Room: " + index);
+        GameObject layout = generateEndRoomLayout();
+
+        // While it doesn't fit the conditions
+        while (
+            placementValidation(layout, index) == false || checkPreviousRoom(layout, index) == false
+        )
+        {
+            // If length of tag = 1, means it is one of the rooms with only one exit
+            if (
+                placementValidation(layout, index) == true
+                && checkPreviousRoom(layout, index) == true
+            )
+            {
+                break;
+            }
+            else
+            {
+                layout = generateEndRoomLayout();
+            }
+        }
+
+        GameObject room = Instantiate(
+            layout,
+            gc.rooms[index].transform.position,
+            Quaternion.identity,
+            gc.rooms[index].transform.parent
+        );
+
+        Destroy(gc.rooms[index]); //removes old room
+        room.name = index.ToString();
+        gc.rooms[index] = room;
+        previousRoom = index;
+    }
+
+    //Generates the normal room layout
     private GameObject generateRoomLayout()
     {
         return layouts[Random.Range(0, layouts.Length)] as GameObject;
     }
 
+    //Randomly generates an end room based on the validation
+    private GameObject generateEndRoomLayout()
+    {
+        return endLayouts[Random.Range(0, endLayouts.Length)] as GameObject;
+    }
+
+    //Generates the main path
     public void mainPath()
     {
-        GameObject prevRoom = gc.rooms[previousRoom];
-
-        List<char> banned = new List<char>();
-
-        // random char
-        char dir = prevRoom.tag[Random.Range(0, prevRoom.tag.Length)];
-
-        int index;
-
-        while (dir != -1)
+        for (int i = 0; i <= mainPathLength; i++)
         {
-            try
+            print(i);
+            GameObject prevRoom = gc.rooms[previousRoom];
+
+            List<char> banned = new List<char>();
+
+            // random direction
+            char dir = prevRoom.tag[Random.Range(0, prevRoom.tag.Length)];
+
+            int index;
+
+            while (dir != -1)
             {
-                if (dir == 'U' && !banned.Contains('U'))
+                try
                 {
-                    index = previousRoom - 10;
-                    newRoom(gc.rooms[index], index);
-                    break;
+                    if (dir == 'U' && !banned.Contains('U'))
+                    {
+                        index = previousRoom - 10;
+                        newRoomSwitch(i, index);
+                        break;
+                    }
+                    else if (dir == 'D' && !banned.Contains('D'))
+                    {
+                        index = previousRoom + 10;
+                        newRoomSwitch(i, index);
+                        break;
+                    }
+                    else if (dir == 'L' && !banned.Contains('L'))
+                    {
+                        index = previousRoom - 1;
+                        newRoomSwitch(i, index);
+                        break;
+                    }
+                    else if (dir == 'R' && !banned.Contains('R'))
+                    {
+                        index = previousRoom + 1;
+                        newRoomSwitch(i, index);
+                        break;
+                    }
+                    else
+                    {
+                        banned.Add(dir);
+                        dir = prevRoom.tag[Random.Range(0, prevRoom.tag.Length)];
+                    }
                 }
-                else if (dir == 'D' && !banned.Contains('D'))
+                catch
                 {
-                    index = previousRoom + 10;
-                    print("cookie 2");
-                    newRoom(gc.rooms[index], index);
-                    break;
-                }
-                else if (dir == 'L' && !banned.Contains('L'))
-                {
-                    index = previousRoom - 1;
-                    print("cookie 3");
-                    newRoom(gc.rooms[index], index);
-                    break;
-                }
-                else if (dir == 'R' && !banned.Contains('R'))
-                {
-                    index = previousRoom + 1;
-                    print("cookie 4");
-                    newRoom(gc.rooms[index], index);
-                    break;
-                }
-                else
-                {
+                    print("Out of the Grid. Trying another direction...");
                     banned.Add(dir);
                     dir = prevRoom.tag[Random.Range(0, prevRoom.tag.Length)];
                 }
             }
-            catch
-            {
-                print("Out of the Grid. Trying another direction...");
-                banned.Add(dir);
-                dir = prevRoom.tag[Random.Range(0, prevRoom.tag.Length)];
-            }
+        }
+    }
+
+    //end of path generation
+    //@param: counter - current iteration of for loop
+    //@param: index - current index of room
+
+    private void newRoomSwitch(int counter, int index)
+    {
+        //if final iteration of loop, generate end room
+        if (counter == mainPathLength)
+        {
+            newRoom(index);
+        }
+        else
+        {
+            newRoom(gc.rooms[index], index);
         }
     }
 
     //validate placement
-    //@param: layout as the room layout
-    //@param: index the index of the current room
+    //@param: layout - the room layout
+    //@param: ind - index of the current room
     private bool placementValidation(GameObject layout, int ind)
     {
         //if index is certain numbers, cannot be certain layouts.
@@ -213,6 +284,8 @@ public class LevelGen : MonoBehaviour
     }
 
     //checks previous room to make sure paths connect
+    //@param: layout - the room layout
+    //@param: ind - index of the current room
     private bool checkPreviousRoom(GameObject layout, int ind)
     {
         // if the previous room doesn't have the corresponding direction
