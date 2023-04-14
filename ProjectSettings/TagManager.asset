@@ -34,6 +34,9 @@ TagManager:
   - UL
   - UR
   - R
+  - DLR
+  - URD
+  - ULD
   layers:
   - Default
   - TransparentFX
