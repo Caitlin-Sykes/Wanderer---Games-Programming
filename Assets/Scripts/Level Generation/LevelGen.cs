@@ -40,15 +40,14 @@ public class LevelGen : MonoBehaviour
     private void newRoom(GameObject nl, int index)
     {
         GameObject layout = generateRoomLayout();
-
+        print(index);
         while (
             gridPlacementValidation(layout, index) == false
-            || checkSurroundingRoom(layout, index) == false
-            || checkPreviousRoom(layout, index) == false
+            || checkSurroundingRoom(layout, index) == false || checkPreviousRoom(layout, index) == false
         )
         {
             //If it is on its first run (and therefore doesn't have a previous room)
-            if (firstRun == true && gridPlacementValidation(layout, index) == true )
+            if (firstRun == true && gridPlacementValidation(layout, index) == true)
             {
                 firstRun = false;
                 break;
@@ -56,8 +55,8 @@ public class LevelGen : MonoBehaviour
 
             //if first run is false and meets conditions, breaks from loop
             else if (firstRun == false && gridPlacementValidation(layout, index) == true
-            && checkSurroundingRoom(layout, index) == true
-            && checkPreviousRoom(layout, index) == true)
+            && checkSurroundingRoom(layout, index) == true && checkPreviousRoom(layout, index) == true
+            )
             {
                 break;
             }
@@ -98,15 +97,9 @@ public class LevelGen : MonoBehaviour
             || checkPreviousRoom(layout, index) == false
         )
         {
-            //If it is on its first run (and therefore doesn't have a previous room)
-            if (firstRun == true && gridPlacementValidation(layout, index) == true )
-            {
-                firstRun = false;
-                break;
-            }
 
             //if first run is false and meets conditions, breaks from loop
-            else if (firstRun == false && gridPlacementValidation(layout, index) == true
+            if (gridPlacementValidation(layout, index) == true
             && checkSurroundingRoom(layout, index) == true
             && checkPreviousRoom(layout, index) == true)
             {
@@ -384,7 +377,7 @@ public class LevelGen : MonoBehaviour
             return true;
         }
         else if (
-            gc.rooms[previousRoom].tag.Contains("U")
+            gc.rooms[previousRoom].tag.Contains("U") //I HAVE SWAPPED THESE TWO
             && layout.tag.Contains("D")
             && ind == previousRoom - 10
         )
@@ -394,7 +387,7 @@ public class LevelGen : MonoBehaviour
         }
         else if (
             gc.rooms[previousRoom].tag.Contains("D")
-            && layout.tag.Contains("U")
+            && layout.tag.Contains("U") ///I HAVE SWAPPED THESE TWO
             && ind == previousRoom + 10
         )
         {
