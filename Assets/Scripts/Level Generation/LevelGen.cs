@@ -16,6 +16,9 @@ public class LevelGen : MonoBehaviour
 
     private int mainPathLength { get; set; } // the length of the main path
 
+    [SerializeField]
+    private List<int> rooms; //the index of the main path
+
     void Start()
     {
         mainPathLength = Random.Range(6, 9);
@@ -26,7 +29,7 @@ public class LevelGen : MonoBehaviour
     {
         // Stores the current position in list
         int index = Random.Range(0, gc.rooms.Count);
-       
+
         // Gets random start from the list of potential start locations
         GameObject startLoc = gc.rooms[index];
 
@@ -40,10 +43,10 @@ public class LevelGen : MonoBehaviour
     private void newRoom(GameObject nl, int index)
     {
         GameObject layout = generateRoomLayout();
-        print(index);
         while (
             gridPlacementValidation(layout, index) == false
-            || checkSurroundingRoom(layout, index) == false || checkPreviousRoom(layout, index) == false
+            || checkSurroundingRoom(layout, index) == false
+            || checkPreviousRoom(layout, index) == false
         )
         {
             //If it is on its first run (and therefore doesn't have a previous room)
@@ -52,15 +55,16 @@ public class LevelGen : MonoBehaviour
                 firstRun = false;
                 break;
             }
-
             //if first run is false and meets conditions, breaks from loop
-            else if (firstRun == false && gridPlacementValidation(layout, index) == true
-            && checkSurroundingRoom(layout, index) == true && checkPreviousRoom(layout, index) == true
+            else if (
+                firstRun == false
+                && gridPlacementValidation(layout, index) == true
+                && checkSurroundingRoom(layout, index) == true
+                && checkPreviousRoom(layout, index) == true
             )
             {
                 break;
             }
-
             //else, sets a new layout, and continues
             else
             {
@@ -77,7 +81,7 @@ public class LevelGen : MonoBehaviour
             nl.transform.parent
         );
 
-        
+        rooms.Add(index); //adds to the list of the main rooms
         Destroy(nl); //removes old room
         room.name = index.ToString(); //sets the name of the room to the index
         gc.rooms[index] = room; //replaces room in list with new room
@@ -88,7 +92,6 @@ public class LevelGen : MonoBehaviour
     //@param: index - position in the list of rooms
     private void newRoom(int index)
     {
-
         GameObject layout = generateEndRoomLayout();
 
         while (
@@ -97,15 +100,15 @@ public class LevelGen : MonoBehaviour
             || checkPreviousRoom(layout, index) == false
         )
         {
-
             //if first run is false and meets conditions, breaks from loop
-            if (gridPlacementValidation(layout, index) == true
-            && checkSurroundingRoom(layout, index) == true
-            && checkPreviousRoom(layout, index) == true)
+            if (
+                gridPlacementValidation(layout, index) == true
+                && checkSurroundingRoom(layout, index) == true
+                && checkPreviousRoom(layout, index) == true
+            )
             {
                 break;
             }
-
             //else, sets a new layout, and continues
             else
             {
@@ -121,6 +124,7 @@ public class LevelGen : MonoBehaviour
             gc.rooms[index].transform.parent
         );
 
+        rooms.Add(index); //adds to the list of the main rooms
         Destroy(gc.rooms[index]); //removes old room
         room.name = index.ToString(); //sets name of room to index
         gc.rooms[index] = room; //replaces room in list with new room
@@ -180,7 +184,7 @@ public class LevelGen : MonoBehaviour
                     {
                         //set index to index plus ten
                         index = previousRoom + 10;
-                       //if empty then call newRoomswitch
+                        //if empty then call newRoomswitch
                         if (checkEmpty(index) == true)
                         {
                             newRoomSwitch(i, index);
@@ -194,10 +198,10 @@ public class LevelGen : MonoBehaviour
                     }
                     //if direction is L and banned does not contain L
                     else if (dir == 'L' && !banned.Contains('L'))
-                    {   
+                    {
                         //subtract one from index
                         index = previousRoom - 1;
-                       //if empty then call newRoomswitch
+                        //if empty then call newRoomswitch
                         if (checkEmpty(index) == true)
                         {
                             newRoomSwitch(i, index);
@@ -209,7 +213,6 @@ public class LevelGen : MonoBehaviour
                             throw new System.Exception();
                         }
                     }
-
                     //if direction is R and banned does not contain R
                     else if (dir == 'R' && !banned.Contains('R'))
                     {
@@ -350,13 +353,12 @@ public class LevelGen : MonoBehaviour
     //@param: ind - index of the current room
     private bool checkPreviousRoom(GameObject layout, int ind)
     {
-        DEBUG("prevRooms", layout, ind);
         // if the previous room doesn't have the corresponding direction
         //so if previous room doesn't have left in its tag, and the new room has right, recalculate
         //will only be -1 on first run
         if (previousRoom == -1)
         {
-            return true;
+            return false;
         }
         else if (
             layout.tag.Contains("L")
@@ -387,7 +389,8 @@ public class LevelGen : MonoBehaviour
         }
         else if (
             gc.rooms[previousRoom].tag.Contains("D")
-            && layout.tag.Contains("U") ///I HAVE SWAPPED THESE TWO
+            && layout.tag.Contains("U")
+            ///I HAVE SWAPPED THESE TWO
             && ind == previousRoom + 10
         )
         {
@@ -452,7 +455,6 @@ public class LevelGen : MonoBehaviour
         return true;
     }
 
-
     //debug function
     //to be removed in future as i borrowed it and haven't cited it
     //if i forget, really sorry, this isn't mine and should have been removed.
@@ -469,6 +471,8 @@ public class LevelGen : MonoBehaviour
         writer.Close();
     }
 
+    // A function to check if a room is empty or not
+    // @param: index as index of the room
     private bool checkEmpty(int index)
     {
         if (gc.rooms[index].tag.Contains("ER"))
@@ -480,6 +484,33 @@ public class LevelGen : MonoBehaviour
             return false;
         }
     }
+
+    //check this tomorrow cait
+    public void fillInSurroundingPaths()
+    {
+        foreach (int room in rooms)
+        {
+            string tag = gc.rooms[room].tag;
+
+            if (tag.Contains("L"))
+            {
+                newRoom(room - 1);
+            }
+
+            if (tag.Contains("R"))
+            {
+                newRoom(room + 1);
+            }
+
+            if (tag.Contains("U"))
+            {
+                newRoom(room - 10);
+            }
+
+            if (tag.Contains("D"))
+            {
+                newRoom(room + 10);
+            }
+        }
+    }
 }
-//no zero for left,
-//no 9 for right
