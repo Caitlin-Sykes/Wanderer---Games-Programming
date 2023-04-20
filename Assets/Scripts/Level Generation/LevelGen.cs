@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-using System.IO;
+using System.Linq;
 
 public class LevelGen : MonoBehaviour
 {
@@ -14,7 +14,9 @@ public class LevelGen : MonoBehaviour
 
     private bool firstRun { get; set; } = true; //if first run of generation
 
-    private int mainPathLength { get; set; } // the length of the main path
+    private int mainPathLength { get; set; } // the length of the main paths
+
+    private string neededDir = ""; //needed directions
 
     [SerializeField]
     private List<int> rooms; //the index of the main path
@@ -88,7 +90,7 @@ public class LevelGen : MonoBehaviour
         previousRoom = index; //previous room is set to index
     }
 
-    // A function to create a new end room;
+    // A function to create a new end room; used to generate an end room
     //@param: index - position in the list of rooms
     private void newRoom(int index)
     {
@@ -117,6 +119,25 @@ public class LevelGen : MonoBehaviour
             }
         }
 
+        GameObject room = Instantiate(
+            layout,
+            gc.rooms[index].transform.position,
+            Quaternion.identity,
+            gc.rooms[index].transform.parent
+        );
+
+        rooms.Add(index); //adds to the list of the main rooms
+        Destroy(gc.rooms[index]); //removes old room
+        room.name = index.ToString(); //sets name of room to index
+        gc.rooms[index] = room; //replaces room in list with new room
+        previousRoom = index; //previousRoom is set to index
+    }
+
+    // A function to create a new room; used by fillingSurroundingRoom function
+    //@param: index - position in the list of rooms
+    //@param: layout - the layout of the room as a gameobject
+    private void newRoom(int index, GameObject layout)
+    {
         GameObject room = Instantiate(
             layout,
             gc.rooms[index].transform.position,
@@ -275,7 +296,6 @@ public class LevelGen : MonoBehaviour
     //@param: ind - index of the current room
     private bool gridPlacementValidation(GameObject layout, int ind)
     {
-        DEBUG("GridPlacement", layout, ind);
         //if index is certain numbers, cannot be certain layouts.
         if (ind == 0)
         {
@@ -288,7 +308,7 @@ public class LevelGen : MonoBehaviour
         else if (ind == 9)
         {
             // cannot be up or right
-            if (layout.tag.Contains("U") || layout.tag.Contains("R"))
+            if (layout.tag.Contains("U") || layout.tag.Contains("R") && layout.tag != "ER")
             {
                 return false;
             }
@@ -304,7 +324,7 @@ public class LevelGen : MonoBehaviour
         else if (ind == 99)
         {
             // cannot be down or right
-            if (layout.tag.Contains("D") || layout.tag.Contains("R"))
+            if (layout.tag.Contains("D") || (layout.tag.Contains("R")))
             {
                 return false;
             }
@@ -329,6 +349,8 @@ public class LevelGen : MonoBehaviour
                     return false;
                 }
             }
+
+            //if it has a 0, it is the most left it can be
             else if (ind.ToString().Contains("0"))
             {
                 if (layout.tag.Contains("L"))
@@ -336,6 +358,7 @@ public class LevelGen : MonoBehaviour
                     return false;
                 }
             }
+            //if it is nine, it is the most right it can be
             else if (ind.ToString().Contains("9"))
             {
                 if (layout.tag.Contains("R"))
@@ -366,12 +389,10 @@ public class LevelGen : MonoBehaviour
             && ind == previousRoom + 1
         )
         {
-            // can't happen
-            print("a");
             return true;
         }
         else if (
-            layout.tag.Contains("R")
+            layout.tag.Contains("R") && layout.tag != "ER"
             && gc.rooms[previousRoom].tag.Contains("L")
             && ind == previousRoom - 1
         )
@@ -379,27 +400,23 @@ public class LevelGen : MonoBehaviour
             return true;
         }
         else if (
-            gc.rooms[previousRoom].tag.Contains("U") //I HAVE SWAPPED THESE TWO
+            gc.rooms[previousRoom].tag.Contains("U")
             && layout.tag.Contains("D")
             && ind == previousRoom - 10
         )
         {
-            print("ae2");
             return true;
         }
         else if (
             gc.rooms[previousRoom].tag.Contains("D")
             && layout.tag.Contains("U")
-            ///I HAVE SWAPPED THESE TWO
             && ind == previousRoom + 10
         )
         {
-            print("ae3");
             return true;
         }
         else
         {
-            print("ae4");
             return false;
         }
     }
@@ -409,8 +426,6 @@ public class LevelGen : MonoBehaviour
     //@param: ind - index of the current room
     private bool checkSurroundingRoom(GameObject layout, int ind)
     {
-        DEBUG("SurroundingRooms", layout, ind);
-
         //checks room above
         if (
             ind > 9
@@ -418,7 +433,6 @@ public class LevelGen : MonoBehaviour
             && !(gc.rooms[ind - 10].tag.Contains("D") || gc.rooms[ind - 10].tag.Contains("ER"))
         )
         {
-            DEBUG("first", gc.rooms[ind - 10], -1);
             return false;
         }
         //checks room to the left
@@ -428,7 +442,6 @@ public class LevelGen : MonoBehaviour
             && !(gc.rooms[ind - 1].tag.Contains("R") || gc.rooms[ind - 1].tag.Contains("E"))
         )
         {
-            DEBUG("second", gc.rooms[ind - 10], -2);
             return false;
         }
         //checks room to the right
@@ -438,7 +451,6 @@ public class LevelGen : MonoBehaviour
             && !(gc.rooms[ind + 1].tag.Contains("L") || gc.rooms[ind + 1].tag.Contains("E"))
         )
         {
-            DEBUG("third", gc.rooms[ind - 10], -3);
             return false;
         }
         //checks room below
@@ -448,28 +460,12 @@ public class LevelGen : MonoBehaviour
             && !(gc.rooms[ind + 10].tag.Contains("U") || gc.rooms[ind + 10].tag.Contains("E"))
         )
         {
-            DEBUG("fourth", gc.rooms[ind - 10], -4);
             return false;
         }
 
         return true;
     }
 
-    //debug function
-    //to be removed in future as i borrowed it and haven't cited it
-    //if i forget, really sorry, this isn't mine and should have been removed.
-    private void DEBUG(string func, GameObject stuff, int ind)
-    {
-        string path = "Debug/Infi.txt";
-
-        //Write some text to the test.txt file
-
-        StreamWriter writer = new StreamWriter(path, true);
-
-        writer.WriteLine(func + " " + stuff.tag + " " + ind);
-
-        writer.Close();
-    }
 
     // A function to check if a room is empty or not
     // @param: index as index of the room
@@ -485,32 +481,174 @@ public class LevelGen : MonoBehaviour
         }
     }
 
-    //check this tomorrow cait
+    //A function to fill in the remaining paths
     public void fillInSurroundingPaths()
     {
-        foreach (int room in rooms)
+        //will tolist fix my issue
+        foreach (int room in rooms.ToList())
         {
-            string tag = gc.rooms[room].tag;
+            string dir = "";
+            previousRoom = room;
 
-            if (tag.Contains("L"))
+            //Foreach direction in the tag
+            foreach (char direct in gc.rooms[room].tag)
             {
-                newRoom(room - 1);
-            }
+                
+                try
+                {
+                    //If the direction is left and the room to the left contains ER
+                    if (direct == 'L' && gc.rooms[room - 1].tag.Contains("ER"))
+                    {
+                        
 
-            if (tag.Contains("R"))
-            {
-                newRoom(room + 1);
-            }
+                        dir = checkDoorways((room - 1));
+                       
+                        //If direction is 1, adds an end room
+                        if (dir.Length == 1)
+                        {
+                            newRoom((room - 1), endLayouts[2]);
+                        }
+                        else
+                        {
+                            //for each possible layout in layouts
+                            foreach (GameObject layout in layouts)
+                            {
+                                //if the tag equals the directio, creates a new room
+                                if (order(layout.tag) == order(dir))
+                                {
+                                    newRoom((room - 1), layout);
+                                    break;
+                                }
+                            }
+                        }
+                    }
 
-            if (tag.Contains("U"))
-            {
-                newRoom(room - 10);
-            }
+                    //If the direction is right and the room to the right contains ER
+                    if (direct == 'R' && gc.rooms[room + 1].tag.Contains("ER"))
+                    {
+                        dir = checkDoorways((room + 1));
+    
+                        if (dir.Length == 1)
+                        {
+                            newRoom((room + 1), endLayouts[1]);
+                        }
+                        else
+                        {
+                            foreach (GameObject layout in layouts)
+                            {
+                                if (order(layout.tag) == order(dir))
+                                {
+                                    newRoom((room + 1), layout);
+                                    break;
+                                }
+                            }
+                        }
+                    }
 
-            if (tag.Contains("D"))
-            {
-                newRoom(room + 10);
+                    //If the direction is above and the room to above contains ER
+                    if (direct == 'U' && gc.rooms[room - 10].tag.Contains("ER"))
+                    {
+                        dir = checkDoorways((room - 10));
+                                                print(dir);
+
+                        if (dir.Length == 1)
+                        {
+                            print("Checking Room Above");
+
+                            newRoom((room - 10), endLayouts[0]);
+                            print("One Length Room Above");
+                            print(endLayouts[0]);
+                        }
+                        else
+                        {
+                            foreach (GameObject layout in layouts)
+                            {
+                                if (order(layout.tag) == order(dir))
+                                {
+                                    print("Create NEW ROOM");
+
+                                    newRoom((room - 10), layout);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                    //If the direction is down and the room below contains ER
+                    if (direct == 'D' && gc.rooms[room + 10].tag.Contains("ER"))
+                    {
+                        dir = checkDoorways(room + 10);
+
+                        if (dir.Length == 1)
+                        {     
+                            newRoom((room + 10), endLayouts[3]);
+                        }
+                        else
+                        {
+                            foreach (GameObject layout in layouts)
+                            {
+                                if (order(layout.tag) == order(dir))
+                                {
+                                    newRoom((room + 10), layout);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+                catch
+                {
+                    print("Beep Boop. Out of Index error, maybe?");
+                }
             }
         }
+    }
+
+    //A function to figure out what directions are needed when filling in rooms;
+    //@param: centre - the centre of the room
+    private string checkDoorways(int centre)
+    {
+        neededDir = "";
+
+        //check room to the right for a left door
+        if (gc.rooms[centre + 1].tag.Contains("L"))
+        {
+            neededDir += "R";
+        }
+
+        //check room to the left for a right door
+        if (gc.rooms[centre - 1].tag.Contains("R") && gc.rooms[centre - 1].tag != ("ER"))
+        {
+            neededDir += "L";
+        }
+
+        //check room above for a down door
+        if (((centre - 10) >= 0) && gc.rooms[centre - 10].tag.Contains("D"))
+        {
+            neededDir += "U";
+        }
+
+        //check room below for a up door
+        if (((centre + 10 <= 100)) && gc.rooms[centre + 10].tag.Contains("U"))
+        {
+            neededDir += "D";
+        }
+
+        return neededDir;
+    }
+
+    //A function to alphabeticise
+    //@param: strng as string
+    private static string order(string strng)
+    {
+        // Convert to char array.
+        List<char> tempList = new List<char>();
+        tempList.AddRange(strng);
+
+        // Sort letters.
+        tempList.Sort();
+
+        // Return modified string.
+        return string.Join("", tempList);
     }
 }
