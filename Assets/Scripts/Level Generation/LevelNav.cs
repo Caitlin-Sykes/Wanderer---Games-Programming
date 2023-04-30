@@ -1,20 +1,38 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelNav : MonoBehaviour
 {
     
-    private Camera cam = Camera.main;
+    private Camera cam;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKey(KeyCode.L))
-        {
-            cam.transform.position = new Vector3(0,-30,-0.01f);
+    public LevelGen lg;
 
-        }
-        
+    public GridController gc;
+
+    private GameObject startRoom {get; set;}
+
+    void Awake() {
+        cam = this.GetComponent<Camera>();
+    }
+
+    public void startPlayerRoom() {
+        startRoom = gc.rooms[lg.randomRoom()];
+        print(startRoom);
+    }
+
+    //A function to initialise the starting camera
+    public void MoveCamera() {
+
+        Transform pos = startRoom.transform.Find("SpawnInit");
+        // pos.position -= new Vector3(0,0,1);
+        cam.transform.localPosition = Vector3.Lerp(transform.position, pos.position, 1); 
+    }
+
+    //A function to move the camera to the next room
+    private void MoveCamera(GameObject room) {
+
+        Transform pos = room.transform.Find("SpawnInit");
+        // pos.position -= new Vector3(0,0,1);
+        cam.transform.localPosition = Vector3.Lerp(transform.position, pos.position, 1); 
     }
 }
