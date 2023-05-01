@@ -19,7 +19,7 @@ public class LevelGen : MonoBehaviour
     private string neededDir = ""; //needed directions
 
     [SerializeField]
-    private List<int> rooms; //the index of the main path
+    public List<int> rooms; //the index of the main path
 
     void Start()
     {
@@ -29,6 +29,7 @@ public class LevelGen : MonoBehaviour
     // A function to generate the start location
     public void generateStartLocation()
     {
+        rooms.Clear();
         // Stores the current position in list
         int index = Random.Range(0, gc.rooms.Count);
 
@@ -44,6 +45,7 @@ public class LevelGen : MonoBehaviour
     //@param index = position in the list of rooms
     private void newRoom(GameObject nl, int index)
     {
+        // int timer = 0;
         GameObject layout = generateRoomLayout();
         while (
             gridPlacementValidation(layout, index) == false
@@ -51,6 +53,14 @@ public class LevelGen : MonoBehaviour
             || checkPreviousRoom(layout, index) == false
         )
         {
+            // timer++;
+
+            //  if (timer == 120) {
+            //     print("infloop");
+            //     gc.resetFunc();
+            //     break;
+            // }
+
             //If it is on its first run (and therefore doesn't have a previous room)
             if (firstRun == true && gridPlacementValidation(layout, index) == true)
             {
@@ -96,12 +106,21 @@ public class LevelGen : MonoBehaviour
     {
         GameObject layout = generateEndRoomLayout();
 
+        // int timer = 0;
         while (
             gridPlacementValidation(layout, index) == false
             || checkSurroundingRoom(layout, index) == false
             || checkPreviousRoom(layout, index) == false
         )
         {
+            // timer++;
+
+            //  if (timer == 120) {
+            //     gc.resetFunc();
+            //     print("infloop");
+
+            // }
+
             //if first run is false and meets conditions, breaks from loop
             if (
                 gridPlacementValidation(layout, index) == true
@@ -651,4 +670,7 @@ public class LevelGen : MonoBehaviour
         // Return modified string.
         return string.Join("", tempList);
     }
+
+    //A function to return a random room
+    public int randomRoom() { return rooms[Random.Range(0, rooms.Count)];}
 }
