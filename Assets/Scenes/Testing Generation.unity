@@ -139,6 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lg: {fileID: 426965806}
   gc: {fileID: 426965807}
+  player: {fileID: 8480444381791392743, guid: 394e1193b8a387944ab152f1067e069d, type: 3}
 --- !u!114 &426965806 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3273746848375753895, guid: 0e32230f208821944b6e7fb0278bf90a, type: 3}
