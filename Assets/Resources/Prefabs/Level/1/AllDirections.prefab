@@ -1350,6 +1350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bcbb657853417f4b853cb3cd0a3daeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rockPrefab: {fileID: 4596504699472497934, guid: d8b89905a9484d24b8bff8519ca3de6d, type: 3}
   clear: 0
 --- !u!1 &5722469345727396800
 GameObject:
@@ -2171,6 +2172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bcbb657853417f4b853cb3cd0a3daeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rockPrefab: {fileID: 4596504699472497934, guid: d8b89905a9484d24b8bff8519ca3de6d, type: 3}
   clear: 0
 --- !u!1 &6646670962704309090
 GameObject:
@@ -2539,6 +2541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bcbb657853417f4b853cb3cd0a3daeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rockPrefab: {fileID: 4596504699472497934, guid: d8b89905a9484d24b8bff8519ca3de6d, type: 3}
   clear: 0
 --- !u!1 &9170417164692130935
 GameObject:
@@ -2631,4 +2634,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bcbb657853417f4b853cb3cd0a3daeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rockPrefab: {fileID: 4596504699472497934, guid: d8b89905a9484d24b8bff8519ca3de6d, type: 3}
   clear: 0

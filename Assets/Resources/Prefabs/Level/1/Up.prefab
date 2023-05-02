@@ -31,7 +31,7 @@ Transform:
   m_Children:
   - {fileID: 1914893844995557800}
   - {fileID: 1201546560507404390}
-  - {fileID: 8297537604206528636}
+  - {fileID: 9201539123501109494}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1985,7 +1985,7 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
---- !u!1 &7243678710946376392
+--- !u!1 &7545782456809126907
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1993,9 +1993,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8297537604206528636}
-  - component: {fileID: 8088964963274027244}
-  - component: {fileID: 2402484787352753553}
+  - component: {fileID: 9201539123501109494}
+  - component: {fileID: 1422407307786482374}
+  - component: {fileID: 7939414365446535519}
   m_Layer: 0
   m_Name: SpawnU
   m_TagString: S1
@@ -2003,13 +2003,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8297537604206528636
+--- !u!4 &9201539123501109494
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7243678710946376392}
+  m_GameObject: {fileID: 7545782456809126907}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 5, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -2018,13 +2018,13 @@ Transform:
   m_Father: {fileID: 5834090510300101379}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &8088964963274027244
+--- !u!61 &1422407307786482374
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7243678710946376392}
+  m_GameObject: {fileID: 7545782456809126907}
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
@@ -2064,18 +2064,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2, y: 0.089992}
   m_EdgeRadius: 0
---- !u!114 &2402484787352753553
+--- !u!114 &7939414365446535519
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7243678710946376392}
+  m_GameObject: {fileID: 7545782456809126907}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9bcbb657853417f4b853cb3cd0a3daeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rockPrefab: {fileID: 4596504699472497934, guid: d8b89905a9484d24b8bff8519ca3de6d, type: 3}
   clear: 0
 --- !u!1 &8865208299856082237
 GameObject:

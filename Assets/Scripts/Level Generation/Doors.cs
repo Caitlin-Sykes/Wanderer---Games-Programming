@@ -5,6 +5,10 @@ public class Doors : MonoBehaviour
 {
     private LevelNav ln;
 
+    public GameObject rockPrefab;
+
+    private GameObject rockItem;
+
     public enum Clear
     {
         Cleared,
@@ -16,15 +20,25 @@ public class Doors : MonoBehaviour
     void Start()
     {
         ln = Camera.main.GetComponent<LevelNav>();
-        print(ln);
+        
+        BoxCollider2D boxy = this.GetComponent<BoxCollider2D>();
+
+        rockItem = Instantiate(rockPrefab, boxy.bounds.center, Quaternion.identity);
     }
+
+
+    //A function to remove the rocks in doorways
+    public void rockClear() {
+        Destroy(rockItem);
+    }
+
 
     private void OnTriggerEnter2D(Collider2D collide)
     {
         int index;
-        print("tagi" + this.tag);
 
-        if (collide.tag == "Player")
+        //If room is cleared and colliding tag is player
+        if (collide.tag == "Player" && clear == Clear.Cleared)
         {
             //S1: Up, S2: Right, S3: Down, S4:Left
             switch (this.tag)
@@ -42,7 +56,6 @@ public class Doors : MonoBehaviour
                     break;
                 case "S3":
                     index = Int32.Parse(this.transform.parent.name);
-                    print("b4 " + index);
                     Destroy(GameObject.Find("Player"));
                     ln.MoveCamera((index + 10), "S3");
                     break;
