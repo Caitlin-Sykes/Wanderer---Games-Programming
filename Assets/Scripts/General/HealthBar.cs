@@ -12,6 +12,8 @@ public class PlayerHealthBar : MonoBehaviour
 
     void Awake()
     {
+        Canvas canva = this.gameObject.GetComponent<Canvas>();
+        canva.worldCamera = Camera.main;
         try {
             ch = chara.GetComponent<Health>();
             slide.maxValue = ch.MAXHEALTH;
