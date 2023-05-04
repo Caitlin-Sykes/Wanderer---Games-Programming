@@ -42,6 +42,7 @@ TagManager:
   - S3
   - S4
   - InitSpawn
+  - SE
   layers:
   - Default
   - TransparentFX

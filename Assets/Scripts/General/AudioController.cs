@@ -41,7 +41,7 @@ public class AudioController : MonoBehaviour
 
         try
         {
-            currentAudio = GameObject.Find("/EventSystem/Audio/" + song).GetComponent<AudioSource>(); //sets currentAudio to the new song
+            currentAudio = GameObject.Find(song).GetComponent<AudioSource>(); //sets currentAudio to the new song
             return true;
         }
 

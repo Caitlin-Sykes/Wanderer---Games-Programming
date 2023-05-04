@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class WallCollision : MonoBehaviour
 {
@@ -7,20 +8,21 @@ public class WallCollision : MonoBehaviour
     public float minX, maxX;
     public float minY, maxY;  
 
-    public EdgeCollider2D box; 
+    private TilemapCollider2D box; 
 
 
 
-    void Start() {
+    void Awake() {
+        box = GetComponent<TilemapCollider2D>();
         getBoundaries(box);
     }
-    private void getBoundaries(EdgeCollider2D boxy) {
+    private void getBoundaries(TilemapCollider2D boxy) {
 
-        minX = boxy.adjacentEndPoint.x;
-        maxX = boxy.adjacentStartPoint.x;
+        minX = boxy.bounds.min.x;
+        maxX = boxy.bounds.max.x;
 
-        minY = boxy.adjacentEndPoint.y;
-        maxY = boxy.adjacentStartPoint.y;
+        minY = boxy.bounds.min.y;
+        maxY = boxy.bounds.max.y;
 
     }
 
@@ -29,6 +31,8 @@ public class WallCollision : MonoBehaviour
     {
         // holds the direction of the wall that was collided with (1 = Up, 2 = Right, 3 = Down, 4 = Left)
         int dir = 0;
+
+        enemy = collide.GetComponent<EnemyChase>();
 
         if (collide.CompareTag("Enemy"))
         {

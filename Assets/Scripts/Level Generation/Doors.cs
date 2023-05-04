@@ -1,5 +1,10 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
+using System.Collections.Generic;
+
+[System.Serializable]
+public class MoveRoom : UnityEvent<int, string> { }
 
 public class Doors : MonoBehaviour
 {
@@ -7,68 +12,79 @@ public class Doors : MonoBehaviour
 
     public GameObject rockPrefab;
 
-    private GameObject rockItem;
+    public GameObject rock { get; set; }
 
-    public enum Clear
-    {
-        Cleared,
-        NotCleared
-    };
+    public EnemySpawn es;
 
-    public Clear clear = Clear.Cleared;
+    public MoveRoom mr;
 
-    void Start()
+    public void Init()
     {
         ln = Camera.main.GetComponent<LevelNav>();
-        
+
         BoxCollider2D boxy = this.GetComponent<BoxCollider2D>();
 
-        rockItem = Instantiate(rockPrefab, boxy.bounds.center, Quaternion.identity);
+        if (this.gameObject.transform.parent.name != ln.currentRoom.name)
+        {
+            rock =
+                Instantiate(
+                    rockPrefab,
+                    ((boxy.bounds.center + this.transform.position) / 2),
+                    Quaternion.identity,
+                    this.gameObject.transform
+                ) as GameObject;
+        }
     }
-
 
     //A function to remove the rocks in doorways
-    public void rockClear() {
-        Destroy(rockItem);
+    public void rockClear()
+    {
+        Destroy(this.rock);
     }
-
 
     private void OnTriggerEnter2D(Collider2D collide)
     {
         int index;
-
         //If room is cleared and colliding tag is player
-        if (collide.tag == "Player" && clear == Clear.Cleared)
+        if (collide.tag == "Player" && es.clear == EnemySpawn.Clear.Cleared)
         {
             //S1: Up, S2: Right, S3: Down, S4:Left
             switch (this.tag)
             {
                 case "S1":
                     index = Int32.Parse(this.transform.parent.name);
-                    print("b4 " + index);
-                    ln.MoveCamera((index - 10), "S1");
+                    mr.Invoke((index - 10), "S1");
                     break;
 
                 case "S2":
                     index = Int32.Parse(this.transform.parent.name);
-                    print("b4 " + index);
-                    ln.MoveCamera((index + 1), "S2");
+                    mr.Invoke((index + 1), "S2");
                     break;
                 case "S3":
                     index = Int32.Parse(this.transform.parent.name);
-                    Destroy(GameObject.Find("Player"));
-                    ln.MoveCamera((index + 10), "S3");
+                    mr.Invoke((index + 10), "S3");
                     break;
                 case "S4":
                     index = Int32.Parse(this.transform.parent.name);
-                    print("b4 " + index);
-                    ln.MoveCamera((index - 1), "S4");
+                    mr.Invoke((index - 1), "S4");
                     break;
 
                 default:
-                    print("sus");
+                    print("No valid tag. Check the tags on the colliders.");
                     break;
             }
+        }
+    }
+
+    public void MoveRoom(int index, string dir)
+    {
+        ln.MoveCamera(index, dir);
+
+        es = ln.currentRoom.GetComponent<EnemySpawn>();
+        if (es.clear != EnemySpawn.Clear.Cleared)
+        {
+            es.spawnEnemies();
+            ln.currentRoom.BroadcastMessage("EnemyStart");
         }
     }
 }
