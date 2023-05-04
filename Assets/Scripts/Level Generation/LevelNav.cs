@@ -9,7 +9,7 @@ public class LevelNav : MonoBehaviour
 
     public GridController gc;
 
-    private GameObject currentRoom {get; set;}
+    public GameObject currentRoom {get; set;}
 
     public GameObject player;
 
@@ -25,10 +25,22 @@ public class LevelNav : MonoBehaviour
     //A function to initialise the starting camera
     public void MoveCamera() {
 
+        //Gets the initial spawn location
         Transform pos = currentRoom.transform.Find("SpawnInit");
+
+        //Shifts the camera
         cam.transform.localPosition = Vector3.Lerp(transform.position, pos.position, 1); 
 
+        //Gets the enemy spawn component
+        EnemySpawn es = currentRoom.GetComponent<EnemySpawn>();
+
+        //Sets the starting room to be cleared so no enemies spawn
+        es.clear = EnemySpawn.Clear.Cleared;
+        
+        Doors door = currentRoom.GetComponentInChildren<Doors>();
+    
         Instantiate(player, pos.position, Quaternion.identity); 
+
 
     }
 

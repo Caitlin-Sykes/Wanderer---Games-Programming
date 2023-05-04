@@ -53,13 +53,6 @@ public class LevelGen : MonoBehaviour
             || checkPreviousRoom(layout, index) == false
         )
         {
-            // timer++;
-
-            //  if (timer == 120) {
-            //     print("infloop");
-            //     gc.resetFunc();
-            //     break;
-            // }
 
             //If it is on its first run (and therefore doesn't have a previous room)
             if (firstRun == true && gridPlacementValidation(layout, index) == true)
@@ -105,21 +98,14 @@ public class LevelGen : MonoBehaviour
     private void newRoom(int index)
     {
         GameObject layout = generateEndRoomLayout();
-
-        // int timer = 0;
+        
         while (
             gridPlacementValidation(layout, index) == false
             || checkSurroundingRoom(layout, index) == false
             || checkPreviousRoom(layout, index) == false
         )
         {
-            // timer++;
 
-            //  if (timer == 120) {
-            //     gc.resetFunc();
-            //     print("infloop");
-
-            // }
 
             //if first run is false and meets conditions, breaks from loop
             if (

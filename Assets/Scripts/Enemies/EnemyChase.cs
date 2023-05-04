@@ -4,9 +4,9 @@ using UnityEngine;
 public class EnemyChase : EnemyMovement
 
 {
-    public Transform player; // Variable to hold the position of the player
+    private GameObject player; // Variable to hold the position of the player
 
-    public PlayerMovement pmScript;
+    private PlayerMovement pmScript;
 
     private Vector3 enemy; // Variable to hold the position of the enemy
 
@@ -19,24 +19,34 @@ public class EnemyChase : EnemyMovement
     // holds attack damage
     private bool invinceFrame { get; set; } = false;
 
-    public WallCollision wc;
+    private WallCollision wc;
+
+    void Awake() {
+        wc = this.transform.parent.gameObject.GetComponentInChildren<WallCollision>();
+    }
 
     // Called when "EnemyStart" is broadcasted
     private IEnumerator EnemyStart()
     {
 
-        Health health = this.GetComponent<Health>();
+        yield return new WaitForSeconds(1);
+
+        Health health = this.gameObject.GetComponent<Health>();
         randomCoOrds();
         float duration = 5;
+        
         while (health.health > 0)
         {
-            if (pmScript.state == PlayerMovement.State.Moving || pmScript.state == PlayerMovement.State.Idle)
+             player = GameObject.FindGameObjectWithTag("Player");
+             pmScript = player.GetComponent<PlayerMovement>();
+
+            if (pmScript.state == PlayerMovement.State.Moving || pmScript.state == PlayerMovement.State.Idle && player != null )
             {
                 // Chases
-                transform.position = Vector2.MoveTowards(transform.position, player.position, (speed * Time.deltaTime));
+                transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, (speed * Time.deltaTime));
 
                 // Calls animationMovement function from EnemyMovement
-                 animationMovement(player.position, transform.position);
+                 animationMovement(player.transform.position, this.transform.position);
 
 
                 yield return null;
@@ -67,11 +77,13 @@ public class EnemyChase : EnemyMovement
     // Gets the collisions
     private IEnumerator OnTriggerEnter2D(Collider2D collide)
     {
+        pmScript = collide.GetComponent<PlayerMovement>();
+        print("collide " + collide);
 
         // If tag is enemy and it has health
         if (collide.CompareTag("Player") && collide.GetComponent<Health>() != null)
         {
-            if (getAttackDir(player, transform.position) != -1 && invinceFrame != true)
+            if (getAttackDir(collide.transform, transform.position) != -1 && invinceFrame != true)
             {
                 // Initialises instance
                 Health healthVar = collide.GetComponent<Health>();
@@ -94,16 +106,9 @@ public class EnemyChase : EnemyMovement
             }
         }
 
-        else if (collide.CompareTag("Walls") && pmScript.state == PlayerMovement.State.Hiding)  {
-            randomCoOrds();
-        }
-
-        else if (collide.CompareTag("Enemy") && pmScript.state == PlayerMovement.State.Hiding)  {
-            randomCoOrds();
-        }
-
         else
         {
+            randomCoOrds();
             yield return new WaitForSeconds(2f);
         }
     }
