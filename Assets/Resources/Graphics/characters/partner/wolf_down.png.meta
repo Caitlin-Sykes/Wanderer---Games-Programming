@@ -1,7 +1,82 @@
 fileFormatVersion: 2
-guid: 95e3d0dc80bed854c95d9d98b36b4417
+guid: bfe428d8436d5ea46987e4132fc57813
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 5192211418949683083
+    second: wolf_down_0
+  - first:
+      213: -4603380214374871575
+    second: wolf_down_1
+  - first:
+      213: -690245841160968503
+    second: wolf_down_2
+  - first:
+      213: -7641605625252194754
+    second: wolf_down_3
+  - first:
+      213: 5183364237110871223
+    second: wolf_down_4
+  - first:
+      213: 3772238136817059522
+    second: wolf_down_5
+  - first:
+      213: 8584207267509851365
+    second: wolf_down_6
+  - first:
+      213: 1354498760505867977
+    second: wolf_down_7
+  - first:
+      213: 2059127356619025850
+    second: wolf_down_8
+  - first:
+      213: -7385605253067957578
+    second: wolf_down_9
+  - first:
+      213: 6975931285312254447
+    second: wolf_down_10
+  - first:
+      213: -5249038127717980807
+    second: wolf_down_11
+  - first:
+      213: 1262899858031804296
+    second: wolf_down_12
+  - first:
+      213: -1645965124548730931
+    second: wolf_down_13
+  - first:
+      213: -414304419326774356
+    second: wolf_down_14
+  - first:
+      213: -4071597979157440717
+    second: wolf_down_15
+  - first:
+      213: 2308687887064478103
+    second: wolf_down_16
+  - first:
+      213: 3521070779890144040
+    second: wolf_down_17
+  - first:
+      213: 8661756547592116904
+    second: wolf_down_18
+  - first:
+      213: 8450378757267154346
+    second: wolf_down_19
+  - first:
+      213: -1743776737361068247
+    second: wolf_down_20
+  - first:
+      213: -5776380045689251257
+    second: wolf_down_21
+  - first:
+      213: -8988673015474562956
+    second: wolf_down_22
+  - first:
+      213: -7768135193205444938
+    second: wolf_down_23
+  - first:
+      213: -2998724917033625283
+    second: wolf_down_24
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -91,56 +166,11 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Server
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: wolf_brown_full_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 224
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f16d8c7ed2b42d242b295c171791ef6d
-      internalID: -98851339
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: wolf_brown_full_1
+      name: wolf_down_0
       rect:
         serializedVersion: 2
         x: 32
@@ -154,56 +184,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eed5ce247d020ac419f6c55640b964a3
-      internalID: 544551976
+      spriteID: 8277198aa6652544da56ccefa4d9787e
+      internalID: 1975948449
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf_brown_full_2
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 224
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e618a617fcd94944ca2d68f84c3384e1
-      internalID: 1752784849
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: wolf_brown_full_3
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 224
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1fd89e64d6cae6e4ca13710ca4bbdce0
-      internalID: -1585935034
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: wolf_brown_full_4
+      name: wolf_down_1
       rect:
         serializedVersion: 2
         x: 128
@@ -217,35 +205,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5e8824f70b2b8b44bbae2369984cd5c0
-      internalID: -1061714521
+      spriteID: acd4d867518e88c4aa670976cf727179
+      internalID: 1116712241
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf_brown_full_5
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 224
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e780206d10fad424fbb0f34680de732e
-      internalID: 1668256572
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: wolf_brown_full_6
+      name: wolf_down_2
       rect:
         serializedVersion: 2
         x: 224
@@ -259,14 +226,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b0f3f7b2ccbe5ae4ca815b6d33117ee3
-      internalID: -2063712516
+      spriteID: c3585ad632d86ab46b8320f56d6ed6c4
+      internalID: 684472327
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf_brown_full_7
+      name: wolf_down_3
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f34f04b268f09f649b0fab7258f6a720
+      internalID: -367556243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_down_4
       rect:
         serializedVersion: 2
         x: 320
@@ -280,18 +268,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f64ebea8d6b72ba49bd6216948b359af
-      internalID: 193623815
+      spriteID: ca82c889e02595b45b6acc1fb034f1ca
+      internalID: 94187832
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf_brown_full_8
+      name: wolf_down_5
       rect:
         serializedVersion: 2
-        x: 0
-        y: 192
+        x: 352
+        y: 224
         width: 32
         height: 32
       alignment: 0
@@ -301,14 +289,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed19143e57bc6a94ebc95a589b148a68
-      internalID: -1028564308
+      spriteID: 76f91fd2df97c9c4c9ee8a1c4a79bb02
+      internalID: -1375962290
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf_brown_full_9
+      name: wolf_down_6
       rect:
         serializedVersion: 2
         x: 32
@@ -322,56 +310,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 04075956428f1574c82190bcbcae8886
-      internalID: 346081651
+      spriteID: 97bd31d327f43f346abf7490dff33fc2
+      internalID: -1860984556
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf_brown_full_10
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 192
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 19ad266ed2f79fb47b0cfca3ac6a744f
-      internalID: -554292079
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: wolf_brown_full_11
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 192
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1628df02efe65c343bff3e8ec87aac7f
-      internalID: 394682616
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: wolf_brown_full_12
+      name: wolf_down_7
       rect:
         serializedVersion: 2
         x: 128
@@ -385,35 +331,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 31f9bcae124904a4bb9718502ca47d20
-      internalID: 236734947
+      spriteID: e27971bba86797d4bb956e2178a88184
+      internalID: -897781588
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf_brown_full_13
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 192
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f83b441977930c545a5737744a45dee4
-      internalID: -94573143
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: wolf_brown_full_14
+      name: wolf_down_8
       rect:
         serializedVersion: 2
         x: 224
@@ -427,14 +352,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 344d03beee2ffd749a7393874aa6d9b9
-      internalID: 1954940168
+      spriteID: 38a9ba6b82d043443b10f459a8b3753a
+      internalID: 1807915450
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf_brown_full_15
+      name: wolf_down_9
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba0d014ddb527d54ca4e1204039920f0
+      internalID: -432100290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_down_10
       rect:
         serializedVersion: 2
         x: 320
@@ -448,18 +394,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bee7a1d50e80c86468d22f98f88da8b2
-      internalID: -1652449906
+      spriteID: bf811c6d8f5c6d34487cdf00477b87b4
+      internalID: 977012839
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf_brown_full_16
+      name: wolf_down_11
       rect:
         serializedVersion: 2
-        x: 0
-        y: 160
+        x: 352
+        y: 192
         width: 32
         height: 32
       alignment: 0
@@ -469,14 +415,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 55e0cc323f10c2543bea87d1278de860
-      internalID: -1340956793
+      spriteID: 818702130e825f14cbc3e84d96529b2d
+      internalID: -1621404387
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf_brown_full_17
+      name: wolf_down_12
       rect:
         serializedVersion: 2
         x: 32
@@ -490,56 +436,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc3f88d2af4b15344bdcc2901cb284e0
-      internalID: -29253760
+      spriteID: 9538253f67bfe2e46817788544cd3239
+      internalID: 943315289
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf_brown_full_18
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 160
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 99276d3982295544bac20cea6528eabb
-      internalID: -1141281940
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: wolf_brown_full_19
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 160
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 03942ec76556d8e419763baa3f42f2e5
-      internalID: 1117853440
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: wolf_brown_full_20
+      name: wolf_down_13
       rect:
         serializedVersion: 2
         x: 128
@@ -553,35 +457,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ddd08dd316f1e554fa96fd3b9b067d80
-      internalID: -1894792878
+      spriteID: 7f078d65a48c38242834ae52b04da224
+      internalID: 718238344
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf_brown_full_21
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 160
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b1c75bdbc6e206a45baf7f6f17ebd57f
-      internalID: -671738677
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: wolf_brown_full_22
+      name: wolf_down_14
       rect:
         serializedVersion: 2
         x: 224
@@ -595,14 +478,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ba633481a19147428b7dc85dbd8985e
-      internalID: 45335520
+      spriteID: 44986eb6278bf8949b470d1bf835a6be
+      internalID: 1534997892
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf_brown_full_23
+      name: wolf_down_15
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5d3aab907f973644936cc504edf746b
+      internalID: 1755542086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_down_16
       rect:
         serializedVersion: 2
         x: 320
@@ -616,18 +520,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db4c995e876f9cd4dadb5d3b6df417a4
-      internalID: 1767215638
+      spriteID: 248e37bec8b379d47badc88263d42770
+      internalID: 865648099
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf_brown_full_24
+      name: wolf_down_17
       rect:
         serializedVersion: 2
-        x: 0
-        y: 128
+        x: 352
+        y: 160
         width: 32
         height: 32
       alignment: 0
@@ -637,14 +541,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e08580742833ec4428d9a73bed2dcd3b
-      internalID: -1061618896
+      spriteID: 9c99fa797a9bc7544b656017eec2731d
+      internalID: -1875706072
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf_brown_full_25
+      name: wolf_down_18
       rect:
         serializedVersion: 2
         x: 32
@@ -658,56 +562,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 37770787a5e74c647b9a9d07cb07d24a
-      internalID: -881299526
+      spriteID: 2945684686378b348aeb702c0c032c0b
+      internalID: 2025473738
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf_brown_full_26
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 128
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d92638dd9e6c88d44ae6bdd169aefae5
-      internalID: 1854025970
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: wolf_brown_full_27
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 128
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 616946b9a62bdf244ae2c16670bbdd58
-      internalID: -991518393
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: wolf_brown_full_28
+      name: wolf_down_19
       rect:
         serializedVersion: 2
         x: 128
@@ -721,35 +583,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5b95a5ff2c959fd48a6f508ff42737ea
-      internalID: -739219140
+      spriteID: 78f552dfc50eda3418fc04b891093267
+      internalID: 1503926411
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf_brown_full_29
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 128
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5f6173f755981f340af6682eb83a34a9
-      internalID: -413235985
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: wolf_brown_full_30
+      name: wolf_down_20
       rect:
         serializedVersion: 2
         x: 224
@@ -763,14 +604,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a6b652b97dbee704a9edfcd7e46d4973
-      internalID: 725651169
+      spriteID: 02382493fac89464c9546c06bd74b4ab
+      internalID: -61138936
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf_brown_full_31
+      name: wolf_down_21
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9120e03d1734d92449c0c1a84901ac7a
+      internalID: 1247545956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_down_22
       rect:
         serializedVersion: 2
         x: 320
@@ -784,18 +646,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 06eb28cf00c7ef64fb5128d4c7ec0413
-      internalID: 511896495
+      spriteID: a6f316dcae77f3247838403747cf0c81
+      internalID: 493131095
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf_brown_full_32
+      name: wolf_down_23
       rect:
         serializedVersion: 2
-        x: 0
-        y: 96
+        x: 352
+        y: 128
         width: 32
         height: 32
       alignment: 0
@@ -805,14 +667,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43d62b8c8865ef3488ddfce77318c2fb
-      internalID: -1071437805
+      spriteID: de3c4f2a91e57d14990054b01b402e6f
+      internalID: 1940772356
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf_brown_full_33
+      name: wolf_down_24
       rect:
         serializedVersion: 2
         x: 32
@@ -826,56 +688,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 312d0f232ff28b642aa55946d801882c
-      internalID: -1279677302
+      spriteID: a23ae155f2a2b494889bcd18ac0a6c2b
+      internalID: 469705831
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf_brown_full_34
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 96
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1c347e1d2c3471b478a5474a7c8e2dd4
-      internalID: 625861043
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: wolf_brown_full_35
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 96
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a97a795da696bd84b8c08d162c9eeb0d
-      internalID: -226701835
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: wolf_brown_full_36
+      name: wolf_down_25
       rect:
         serializedVersion: 2
         x: 128
@@ -889,35 +709,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 53f3d1158b21694489e440598d739118
-      internalID: 2052807505
+      spriteID: 5a0d8c7ac8126da48b9150373170e499
+      internalID: 118966126
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf_brown_full_37
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 96
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f1dbb68da6321684bb47e5b86e671ebc
-      internalID: -643140256
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: wolf_brown_full_38
+      name: wolf_down_26
       rect:
         serializedVersion: 2
         x: 224
@@ -931,14 +730,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 069600c4cf0b51a47a914f81e1d9c47a
-      internalID: -864693551
+      spriteID: 2cdaafb184ab7324181b5d6d87b8cdc4
+      internalID: -1097647337
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf_brown_full_39
+      name: wolf_down_27
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7742530b5db49c543accfe0a57e2cec7
+      internalID: 2032259796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_down_28
       rect:
         serializedVersion: 2
         x: 320
@@ -952,18 +772,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a0a15a4d67796346a9115a42b4f5a22
-      internalID: 894018267
+      spriteID: e050bde665b8e2047b2dfafc834fc475
+      internalID: -1878577325
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf_brown_full_40
+      name: wolf_down_29
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
+        x: 352
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -973,14 +793,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b64a00ad4e5e0324ca73dd987c155abe
-      internalID: 622522112
+      spriteID: f26ff922ac999eb44855d1d0cb8cc9ae
+      internalID: 1233747425
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf_brown_full_41
+      name: wolf_down_30
       rect:
         serializedVersion: 2
         x: 32
@@ -994,56 +814,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 00233aaf83a998c4a993951579038968
-      internalID: -278443571
+      spriteID: 4163dc1baa06a574981ae7ff578aa1ab
+      internalID: 2145994278
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf_brown_full_42
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cb80777433aec2442a314dd9908cecef
-      internalID: -2126682412
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: wolf_brown_full_43
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f82fe2fb3982de0418f043c1932de190
-      internalID: -1284701468
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: wolf_brown_full_44
+      name: wolf_down_31
       rect:
         serializedVersion: 2
         x: 128
@@ -1057,35 +835,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 50747f34c3d0283469f3cc4ef467b4f2
-      internalID: -1429212340
+      spriteID: c2bee8c6b99c5dd49957893d599b814b
+      internalID: 1855642991
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf_brown_full_45
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: be2beddd21ab5d34ba4626e04a3c6d98
-      internalID: 1993315950
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: wolf_brown_full_46
+      name: wolf_down_32
       rect:
         serializedVersion: 2
         x: 224
@@ -1099,14 +856,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3e6a8a9e7b2595a4180212ab6ca63fc7
-      internalID: 995013115
+      spriteID: 8fcced76a7804984ca10123ac88b50c6
+      internalID: -201446830
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf_brown_full_47
+      name: wolf_down_33
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14a1f606bdc08b949b4946d8dc717a44
+      internalID: 710874422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_down_34
       rect:
         serializedVersion: 2
         x: 320
@@ -1120,18 +898,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e11ff4079ea3ba94e95b2e8aeda5cc46
-      internalID: 977939399
+      spriteID: 8ec21c91261ddd74ca82a4d583ab00d1
+      internalID: -1092058994
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf_brown_full_48
+      name: wolf_down_35
       rect:
         serializedVersion: 2
-        x: 0
-        y: 32
+        x: 352
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -1141,14 +919,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1400466b1ec44854e857862f8ca3ea43
-      internalID: -22461502
+      spriteID: 984b64a68c59a3a489a5e4c684bce2c3
+      internalID: -886741179
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf_brown_full_49
+      name: wolf_down_36
       rect:
         serializedVersion: 2
         x: 32
@@ -1162,56 +940,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aa1f61d3de5d5e34bb06684b47a26cc6
-      internalID: -1879110740
+      spriteID: 7d055597ddf4ea04c999242aa865e634
+      internalID: -1882643792
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf_brown_full_50
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3a9fbb7730674a842bdf64506eb2243d
-      internalID: -1802204056
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: wolf_brown_full_51
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d49e914b726e96845a2eecdac1709a2a
-      internalID: -2071093333
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: wolf_brown_full_52
+      name: wolf_down_37
       rect:
         serializedVersion: 2
         x: 128
@@ -1225,35 +961,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6622d6aa632da58449a15cfcc98923a6
-      internalID: -1737475296
+      spriteID: e31744fbdf8635144aba5334117adb2e
+      internalID: 1008163182
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf_brown_full_53
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6e791bc5739ce7a4982dc2ef7fbc926f
-      internalID: 2066455211
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: wolf_brown_full_54
+      name: wolf_down_38
       rect:
         serializedVersion: 2
         x: 224
@@ -1267,14 +982,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2a8eaad9917558499fd6b07757a23c0
-      internalID: -1202433502
+      spriteID: 4f66590cc4ea5a04cbda40dc7ea2c442
+      internalID: -1216975165
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf_brown_full_55
+      name: wolf_down_39
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9683e0202d4c734bb1f32b797b839d2
+      internalID: -140485935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_down_40
       rect:
         serializedVersion: 2
         x: 320
@@ -1288,18 +1024,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e3b4dedf87819d4e9c8fd3424c073cb
-      internalID: -1766585762
+      spriteID: b23518450ab888242b5bf46252ac5ea0
+      internalID: 1380742040
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf_brown_full_56
+      name: wolf_down_41
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 352
+        y: 32
         width: 32
         height: 32
       alignment: 0
@@ -1309,14 +1045,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 38a2da2198596194ebe80331a9aea1bb
-      internalID: 305019602
+      spriteID: 799327ca59d455b478aa71225987b0e6
+      internalID: 318205368
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf_brown_full_57
+      name: wolf_down_42
       rect:
         serializedVersion: 2
         x: 32
@@ -1330,56 +1066,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 47f04423611ad334e8a159765f2e2dca
-      internalID: 648062209
+      spriteID: 3beea0f016907e24b8890bd18621af22
+      internalID: -873214823
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf_brown_full_58
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 47d57b24bb058eb4ab3294a06b900733
-      internalID: 1809349859
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: wolf_brown_full_59
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e8ef0d3889a6bce489b2026cafc29fd0
-      internalID: -373804532
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: wolf_brown_full_60
+      name: wolf_down_43
       rect:
         serializedVersion: 2
         x: 128
@@ -1393,35 +1087,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e9398786699d3c5499217bb513cfea2f
-      internalID: -231756412
+      spriteID: 0a369caa32cd17e4d957170b45ea30d0
+      internalID: 1608405414
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf_brown_full_61
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f41f015170539e649906e3065b8ee574
-      internalID: 1712782204
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: wolf_brown_full_62
+      name: wolf_down_44
       rect:
         serializedVersion: 2
         x: 224
@@ -1435,14 +1108,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ca642c4d591deb540b69fc15877e036c
-      internalID: 1347638297
+      spriteID: a4401b19e14fb23429b495ec74499e69
+      internalID: 1443323617
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolf_brown_full_63
+      name: wolf_down_45
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5e1d9a5aebdd99448545dbf788d7a91
+      internalID: 1587276037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_down_46
       rect:
         serializedVersion: 2
         x: 320
@@ -1456,8 +1150,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f74733dc5cfec3c47accdb00f0ca3b7f
-      internalID: 1079823562
+      spriteID: f6d640718165a6e45b2a5d68676c6af7
+      internalID: -692699340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_down_47
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54840f3b8a16ced4b93161628cb85c1d
+      internalID: 2051787006
       vertices: []
       indices: 
       edges: []
@@ -1465,7 +1180,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: c0ab2ad733d53a2439ebbcbf798ca164
     internalID: 0
     vertices: []
     indices: 
@@ -1473,70 +1188,54 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      wolf_brown_full_0: -98851339
-      wolf_brown_full_1: 544551976
-      wolf_brown_full_10: -554292079
-      wolf_brown_full_11: 394682616
-      wolf_brown_full_12: 236734947
-      wolf_brown_full_13: -94573143
-      wolf_brown_full_14: 1954940168
-      wolf_brown_full_15: -1652449906
-      wolf_brown_full_16: -1340956793
-      wolf_brown_full_17: -29253760
-      wolf_brown_full_18: -1141281940
-      wolf_brown_full_19: 1117853440
-      wolf_brown_full_2: 1752784849
-      wolf_brown_full_20: -1894792878
-      wolf_brown_full_21: -671738677
-      wolf_brown_full_22: 45335520
-      wolf_brown_full_23: 1767215638
-      wolf_brown_full_24: -1061618896
-      wolf_brown_full_25: -881299526
-      wolf_brown_full_26: 1854025970
-      wolf_brown_full_27: -991518393
-      wolf_brown_full_28: -739219140
-      wolf_brown_full_29: -413235985
-      wolf_brown_full_3: -1585935034
-      wolf_brown_full_30: 725651169
-      wolf_brown_full_31: 511896495
-      wolf_brown_full_32: -1071437805
-      wolf_brown_full_33: -1279677302
-      wolf_brown_full_34: 625861043
-      wolf_brown_full_35: -226701835
-      wolf_brown_full_36: 2052807505
-      wolf_brown_full_37: -643140256
-      wolf_brown_full_38: -864693551
-      wolf_brown_full_39: 894018267
-      wolf_brown_full_4: -1061714521
-      wolf_brown_full_40: 622522112
-      wolf_brown_full_41: -278443571
-      wolf_brown_full_42: -2126682412
-      wolf_brown_full_43: -1284701468
-      wolf_brown_full_44: -1429212340
-      wolf_brown_full_45: 1993315950
-      wolf_brown_full_46: 995013115
-      wolf_brown_full_47: 977939399
-      wolf_brown_full_48: -22461502
-      wolf_brown_full_49: -1879110740
-      wolf_brown_full_5: 1668256572
-      wolf_brown_full_50: -1802204056
-      wolf_brown_full_51: -2071093333
-      wolf_brown_full_52: -1737475296
-      wolf_brown_full_53: 2066455211
-      wolf_brown_full_54: -1202433502
-      wolf_brown_full_55: -1766585762
-      wolf_brown_full_56: 305019602
-      wolf_brown_full_57: 648062209
-      wolf_brown_full_58: 1809349859
-      wolf_brown_full_59: -373804532
-      wolf_brown_full_6: -2063712516
-      wolf_brown_full_60: -231756412
-      wolf_brown_full_61: 1712782204
-      wolf_brown_full_62: 1347638297
-      wolf_brown_full_63: 1079823562
-      wolf_brown_full_7: 193623815
-      wolf_brown_full_8: -1028564308
-      wolf_brown_full_9: 346081651
+      wolf_down_0: 1975948449
+      wolf_down_1: 1116712241
+      wolf_down_10: 977012839
+      wolf_down_11: -1621404387
+      wolf_down_12: 943315289
+      wolf_down_13: 718238344
+      wolf_down_14: 1534997892
+      wolf_down_15: 1755542086
+      wolf_down_16: 865648099
+      wolf_down_17: -1875706072
+      wolf_down_18: 2025473738
+      wolf_down_19: 1503926411
+      wolf_down_2: 684472327
+      wolf_down_20: -61138936
+      wolf_down_21: 1247545956
+      wolf_down_22: 493131095
+      wolf_down_23: 1940772356
+      wolf_down_24: 469705831
+      wolf_down_25: 118966126
+      wolf_down_26: -1097647337
+      wolf_down_27: 2032259796
+      wolf_down_28: -1878577325
+      wolf_down_29: 1233747425
+      wolf_down_3: -367556243
+      wolf_down_30: 2145994278
+      wolf_down_31: 1855642991
+      wolf_down_32: -201446830
+      wolf_down_33: 710874422
+      wolf_down_34: -1092058994
+      wolf_down_35: -886741179
+      wolf_down_36: -1882643792
+      wolf_down_37: 1008163182
+      wolf_down_38: -1216975165
+      wolf_down_39: -140485935
+      wolf_down_4: 94187832
+      wolf_down_40: 1380742040
+      wolf_down_41: 318205368
+      wolf_down_42: -873214823
+      wolf_down_43: 1608405414
+      wolf_down_44: 1443323617
+      wolf_down_45: 1587276037
+      wolf_down_46: -692699340
+      wolf_down_47: 2051787006
+      wolf_down_5: -1375962290
+      wolf_down_6: -1860984556
+      wolf_down_7: -897781588
+      wolf_down_8: 1807915450
+      wolf_down_9: -432100290
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

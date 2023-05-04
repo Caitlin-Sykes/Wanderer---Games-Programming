@@ -17,6 +17,12 @@ public class Health : MonoBehaviour
     // Event
     public UnityEvent hit;
 
+    OnScene os;
+
+    void Awake() {
+        os = Camera.main.GetComponent<OnScene>();
+    }
+
     void start()
     {
         this.health = MAXHEALTH;
@@ -28,7 +34,7 @@ public class Health : MonoBehaviour
         // If the health is zero and the tag is player, then game over
         if (health <= 0 && this.CompareTag("Player"))
         {
-            SendMessageUpwards("gameOver");
+            os.gameOver();
 
         }
 

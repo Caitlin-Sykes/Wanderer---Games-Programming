@@ -9,7 +9,7 @@ public class ChangeScene : MonoBehaviour
     public Animator animator;
 
     // A function to close the game entirely
-    private void shut_down_game()
+    public void shut_down_game()
     {
         Application.Quit();
     }
