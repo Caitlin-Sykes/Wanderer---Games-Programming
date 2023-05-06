@@ -11,6 +11,7 @@ public class AttackBoxes : MonoBehaviour
     }
 
     // Initialises game box to corresponding childbox
+    //@param dir - direction of box
     public GameObject initGameBox(int dir) {
         switch(dir) {
             case 1:
@@ -35,11 +36,13 @@ public class AttackBoxes : MonoBehaviour
             // If tag is enemy and it has health
             if (collide.transform.CompareTag("Enemy") && collide.GetComponent<Health>() != null && transform.CompareTag("Player") != false)
             {
-                print("is being called");
+              
+                //GEts health of collider
                 healthVar = collide.GetComponent<Health>();
                 healthVar.healthDecrement(pa.damage); //problematic line that throws errors yet works??
-                pa.attackBox.SetActive(false);
+                pa.attackBox.SetActive(false); //disables
 
+                //If the rigidbody isn't null
                 if (collide.GetComponent<Rigidbody2D>() != null)
                 {
                     Vector2 collision = ((collide.transform.position - transform.position));
@@ -62,6 +65,7 @@ public class AttackBoxes : MonoBehaviour
     }
     
     // A function to cancel the force after a certain amount of time
+    //@param target - what has the force applied to it
     private IEnumerator cancelForce(Rigidbody2D target)
     {
         yield return new WaitForSeconds(1);

@@ -5,25 +5,26 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Launch_Screen.unity
     guid: 93b869d77c6c55044a1bb221117221b2
   - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: 005c41169584fb240baf17734cdbef9f
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/Scenes/DEMO-REMOVE_IN_FINAL_RELEASE.unity
-    guid: 3b1fee0f283fcb4449167f590a6d9bc8
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 00e0d37e20155a943a5885133f1f0f40
+  - enabled: 1
+    path: Assets/Scenes/Introduction.unity
+    guid: fa288db79766612458f280b5b37dadf8
+  - enabled: 1
+    path: Assets/Scenes/1.unity
+    guid: b0a7a1855a7adbb46b70e4917f1010d7
+  - enabled: 1
+    path: Assets/Scenes/Boss.unity
+    guid: cd5e9d4f9b902c647aa84082b6823b55
+  - enabled: 1
+    path: Assets/Scenes/Done.unity
+    guid: c365141c96cb63a4792b5c80c554b52c
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0

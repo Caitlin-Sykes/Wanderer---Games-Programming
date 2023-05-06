@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.Events;
-using System.Collections.Generic;
 
 [System.Serializable]
 public class MoveRoom : UnityEvent<int, string> { }
@@ -76,6 +75,9 @@ public class Doors : MonoBehaviour
         }
     }
 
+    //A function for moving between rooms
+    //index - index of current room
+    //dir - direction of the door to enter
     public void MoveRoom(int index, string dir)
     {
         ln.MoveCamera(index, dir);

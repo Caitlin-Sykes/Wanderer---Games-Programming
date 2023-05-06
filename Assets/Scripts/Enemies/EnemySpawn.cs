@@ -61,11 +61,10 @@ public class EnemySpawn : MonoBehaviour
 
         this.initEnemy = true;
         int noOfEnems = noOfSpawns();
+        
         //For the number of enemies to spawn
         for (int i = 0; i <= noOfEnems; i++) {
             GameObject enem = Instantiate(getEnemyType(), getEnemySpawnLoc(), Quaternion.identity, this.gameObject.transform) as GameObject;
         }
-    
-        //get new room and call spawn enemies;
     }
 }

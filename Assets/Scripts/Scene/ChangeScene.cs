@@ -15,7 +15,7 @@ public class ChangeScene : MonoBehaviour
     }
 
     // a function to load the scenes.
-    // takes in the name of the scene to be loaded as a string
+    // @param scene - name of the scene to be loaded as a string
     IEnumerator loadSceneTransitions(string scene)
     {
         // Calls FadeOut which triggers fade out
@@ -30,6 +30,7 @@ public class ChangeScene : MonoBehaviour
     }
 
     // Loads scene
+    //@param scenetoload - name of the scene
     public void loadScene(string sceneToLoad)
     {
         // Starts a Coroutine (basically multithreading)    

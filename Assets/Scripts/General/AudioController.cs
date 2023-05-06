@@ -7,12 +7,9 @@ public class AudioController : MonoBehaviour
     public static AudioSource currentAudio { get; set; }//the song currently playing
     public GameObject audioGO; // the parent gameobject of all audio
 
-    
-    void Awake() {
-        changeSong("Main");
-    }
 
     // A function to change the song
+    //@param newSong - name of the new song
     public void changeSong(string newSong)
     {
 
@@ -36,6 +33,7 @@ public class AudioController : MonoBehaviour
 
 
     // Gets the audio object
+    //@param song - name of the song
     private bool getAudio(string song)
     {
 
