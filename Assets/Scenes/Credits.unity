@@ -428,7 +428,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 547.51697, y: -96}
+  m_AnchoredPosition: {x: 480.27057, y: -96}
   m_SizeDelta: {x: 802.273, y: 448.118}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &247999737
@@ -453,8 +453,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Music\nForest Lullaby - LesFM on Pixabay.com\nWalk Together - Olexy on
     Pixabay.com\n\nIcons\nFontAwesome - FontAwesome.com\n\nCoding\nCait Ridge-Sykes\n\nSprites\nGUI
-    Sprites - Cait Ridge-Sykes\nWolf Sprites - FinalBossBlues @ Itch.io\n\nFont\nCascadia-Code
-    - Microsoft
+    Sprites - Cait Ridge-Sykes\nWolf Sprites - FinalBossBlues @ Itch.io\n\nFor the
+    rest, see Credits.md in the Resource folder
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8cdeb8929b7d054429a4f5c92b8eb02b, type: 2}
   m_sharedMaterial: {fileID: -3006385983716424295, guid: 8cdeb8929b7d054429a4f5c92b8eb02b, type: 2}
@@ -541,7 +541,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2295953538138989404, guid: 71d3f37a03192ed40a4333936dc52715, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4659287242274769148, guid: 71d3f37a03192ed40a4333936dc52715, type: 3}
       propertyPath: m_RootOrder
@@ -603,6 +603,11 @@ PrefabInstance:
 --- !u!4 &263432598 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2817878971172047846, guid: 71d3f37a03192ed40a4333936dc52715, type: 3}
+  m_PrefabInstance: {fileID: 263432597}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &263432599 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6473870326502941135, guid: 71d3f37a03192ed40a4333936dc52715, type: 3}
   m_PrefabInstance: {fileID: 263432597}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &272800211
@@ -786,6 +791,7 @@ GameObject:
   - component: {fileID: 835054532}
   - component: {fileID: 835054531}
   - component: {fileID: 835054530}
+  - component: {fileID: 835054533}
   m_Layer: 0
   m_Name: Back to Main Menu
   m_TagString: ScreenTransition
@@ -859,7 +865,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 835054533}
         m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
         m_MethodName: loadScene
         m_Mode: 5
@@ -909,6 +915,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 835054528}
   m_CullTransparentMesh: 1
+--- !u!114 &835054533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 835054528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ca8059cfcfe514d8d9229768d30bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 263432599}
 --- !u!1 &959543251
 GameObject:
   m_ObjectHideFlags: 0
@@ -1151,7 +1170,6 @@ GameObject:
   - component: {fileID: 1419715609}
   - component: {fileID: 1419715608}
   - component: {fileID: 1419715607}
-  - component: {fileID: 1419715610}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -1209,21 +1227,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1419715610
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1419715606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b32c3539b22883498701548f264e5df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onGameOverEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1900656917
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,9 +9,25 @@ public class PlayerMovement : MonoBehaviour
     public PlayerAttacks pa;
 
     public PlayerHide ph;
-    public enum AttackDir { N, E, S, W, NA }; //(NA = not attacking)
+
+    public enum AttackDir
+    {
+        N,
+        E,
+        S,
+        W,
+        NA
+    }; //(NA = not attacking)
+
     public AttackDir attackDir = AttackDir.NA;
-    public enum State { Moving, Hiding, Idle };
+
+    public enum State
+    {
+        Moving,
+        Hiding,
+        Idle
+    };
+
     public State state = State.Idle;
 
     void Start()
@@ -43,25 +59,24 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("is_moving", true);
             anim.SetBool("hide", false);
         }
-
         else if (state == State.Hiding)
         {
             anim.SetBool("hide", true);
             anim.SetBool("is_moving", false);
         }
-
-        else if (state == State.Idle) 
+        else if (state == State.Idle)
         {
             anim.SetBool("is_moving", false);
             anim.SetBool("hide", false);
         }
-
-        else {
+        else
+        {
             anim.SetBool("is_moving", true);
             anim.SetBool("hide", false);
             state = State.Moving;
         }
     }
+
     // Controls the attack animation
     public void attackAnim()
     {
@@ -71,23 +86,17 @@ public class PlayerMovement : MonoBehaviour
         {
             anim.SetTrigger("Attack");
             state = State.Moving;
-
         }
-
         else if (state == State.Hiding)
         {
-
-
             state = State.Moving;
             anim.SetTrigger("unhideAttack");
-
         }
     }
 
     // Gets the player's input
     private void getPlayerInput()
     {
-
         direction = Vector2.zero;
 
         if (state != State.Hiding)
@@ -102,7 +111,6 @@ public class PlayerMovement : MonoBehaviour
         {
             direction += Vector2.up;
             checkHide(false);
-
         }
         // move left
         if (Input.GetKey(KeyCode.A))
@@ -114,10 +122,8 @@ public class PlayerMovement : MonoBehaviour
         //move down
         if (Input.GetKey(KeyCode.S))
         {
-
             direction += Vector2.down;
             checkHide(false);
-
         }
 
         // move right
@@ -143,7 +149,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-
             attackDir = AttackDir.W;
             checkHide(true);
         }
@@ -159,15 +164,14 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.H))
         {
             state = State.Hiding;
-
         }
     }
 
     //checkHide is used to call different functions depending on whether Moss is hiding or not.
-    private void checkHide(bool attack) {
-
-        if (attack == false) {
-            
+    private void checkHide(bool attack)
+    {
+        if (attack == false)
+        {
             if (state == State.Hiding)
             {
                 anim.SetTrigger("unhide");
@@ -175,32 +179,28 @@ public class PlayerMovement : MonoBehaviour
 
             state = State.Moving;
         }
-
-        else {
-
+        else
+        {
             int dir = convertCTI();
             // If attack is true and state is hiding
-            if (state == State.Hiding) {
-                
-                    anim.SetBool("hide", false);
-                    anim.SetTrigger("unhideAttack");
-                    state = State.Moving;
-                    ph.hideAttack(dir);
+            if (state == State.Hiding)
+            {
+                anim.SetBool("hide", false);
+                anim.SetTrigger("unhideAttack");
+                state = State.Moving;
+                ph.hideAttack(dir);
             }
-
-            else {
-
+            else
+            {
                 StartCoroutine(pa.mainAttack(dir, 3));
                 state = State.Moving;
             }
         }
+    }
 
-
-
-        }
-
-        private int convertCTI() {
-
+    //Function to convert character to integer for the directions
+    private int convertCTI()
+    {
         switch (attackDir)
         {
             case AttackDir.N:
@@ -217,20 +217,8 @@ public class PlayerMovement : MonoBehaviour
                 return 4;
             default:
                 break;
-
         }
 
-            return -1;
-        }
-
+        return -1;
     }
-
-    // TODO: hiding mechanic
-    // actual stage generation
-    // enemy placements - an array of possible locations and then randomly picks enemies?
-    // TODO: when player hit, tint sprite red, then back to normal
-
-
-
-
-
+}

@@ -26,6 +26,7 @@ public class EnemyChase : EnemyMovement
     }
 
     // Called when "EnemyStart" is broadcasted
+    //A function to start enemy ai
     private IEnumerator EnemyStart()
     {
 
@@ -35,6 +36,7 @@ public class EnemyChase : EnemyMovement
         randomCoOrds();
         float duration = 5;
         
+        //While health is not 0
         while (health.health > 0)
         {
              player = GameObject.FindGameObjectWithTag("Player");
@@ -53,6 +55,7 @@ public class EnemyChase : EnemyMovement
             }
 
 
+            //Else gens random coords
             else
             {
                 duration -= Time.deltaTime;
@@ -65,6 +68,7 @@ public class EnemyChase : EnemyMovement
                     randomCoOrds();
 
                 }
+
                 transform.position = Vector2.MoveTowards(transform.position, xy, (speed * Time.deltaTime));
                 // Calls animationMovement function from EnemyMovement
                 animationMovement(xy, transform.position);
@@ -117,6 +121,7 @@ public class EnemyChase : EnemyMovement
 
     // // Recieves direction and moves the enemy accordingly
     // // Called from WallCollision 
+    //@param dir as int - direction
     public void bounce(int dir)
     {
 

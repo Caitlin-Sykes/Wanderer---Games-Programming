@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.Events;
-using UnityEngine.AI;
 
 
 public class Health : MonoBehaviour
@@ -21,12 +20,9 @@ public class Health : MonoBehaviour
 
     void Awake() {
         os = Camera.main.GetComponent<OnScene>();
-    }
-
-    void start()
-    {
         this.health = MAXHEALTH;
     }
+
 
     // Update is called once per frame
     void Update()
@@ -47,6 +43,7 @@ public class Health : MonoBehaviour
     }
 
     // a function to decrement health
+    //@param: damage - the damage to be taken
     public void healthDecrement(int damage)
     {
         if (damage > 0)
@@ -56,12 +53,21 @@ public class Health : MonoBehaviour
         }
     }
 
-    // Destroys the game object
+    // Destroys the game object on death and plays the animation
     IEnumerator death()
     {
         anim.SetTrigger("EnemyDeath");
         yield return new WaitForSeconds(1f);
         Destroy(this.gameObject);
     }
+
+    //A function to set the health
+     public void setHealth(int health)
+    {
+            this.health = health;
+            hit.Invoke();
+        }
+    
+
 }
 

@@ -45,7 +45,7 @@ public class LevelGen : MonoBehaviour
     //@param index = position in the list of rooms
     private void newRoom(GameObject nl, int index)
     {
-        // int timer = 0;
+        float timer = 20;
         GameObject layout = generateRoomLayout();
         while (
             gridPlacementValidation(layout, index) == false
@@ -53,6 +53,13 @@ public class LevelGen : MonoBehaviour
             || checkPreviousRoom(layout, index) == false
         )
         {
+
+            timer -= Time.deltaTime; 
+
+            if (timer == 0) {
+                gc.CancelInvoke();
+                gc.resetFunc();
+            }
 
             //If it is on its first run (and therefore doesn't have a previous room)
             if (firstRun == true && gridPlacementValidation(layout, index) == true)
@@ -76,6 +83,7 @@ public class LevelGen : MonoBehaviour
                 layout = generateRoomLayout();
                 continue;
             }
+
         }
 
         //Instantiates new room as room
@@ -97,6 +105,8 @@ public class LevelGen : MonoBehaviour
     //@param: index - position in the list of rooms
     private void newRoom(int index)
     {
+        float timer = 20;
+
         GameObject layout = generateEndRoomLayout();
         
         while (
@@ -106,6 +116,13 @@ public class LevelGen : MonoBehaviour
         )
         {
 
+
+            timer -= Time.deltaTime; 
+
+            if (timer == 0) {
+                gc.CancelInvoke();
+                gc.resetFunc();
+            }
 
             //if first run is false and meets conditions, breaks from loop
             if (

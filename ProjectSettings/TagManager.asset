@@ -43,15 +43,19 @@ TagManager:
   - S4
   - InitSpawn
   - SE
+  - Dialogue
+  - MainDoor
+  - Escape
+  - MainDoor2
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Top
   - Water
   - UI
   - Camera
-  - 
+  - Top2
   - 
   - 
   - 
@@ -100,4 +104,7 @@ TagManager:
     locked: 0
   - name: Top
     uniqueID: 3429024307
+    locked: 0
+  - name: Top2
+    uniqueID: 1357780089
     locked: 0

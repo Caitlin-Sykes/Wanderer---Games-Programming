@@ -37,9 +37,10 @@ public class GridController : MonoBehaviour
 
     //An attempt to fix the inf loop
     //Restarts the generation
-    // public void resetFunc() {
-    //     startGen.Invoke();
+    public void resetFunc() {
+        startGen.Invoke();
+        startGame.Invoke();
         
-    // }
+    }
 }
 

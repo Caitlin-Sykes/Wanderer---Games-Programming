@@ -7,6 +7,8 @@ public class EnemyMovement : MonoBehaviour
     private float gradient; //a variable to hold the gradient
 
     // Sets the animation movement
+    //@param Vector2 player - position of player
+    //@param Vector3 enemy - position of enemy
     public void animationMovement(Vector2 player, Vector3 enemy)
     {
 
@@ -75,12 +77,17 @@ public class EnemyMovement : MonoBehaviour
 
 
     // Calcs gradient
+    //@param Vector2 player - position of player
+    //@param Vector3 enemy - position of enemy
     private float calcGradient(Vector2 player, Vector3 enemy)
     {
         return (enemy.y - player.y) / (enemy.x - player.x);
     }
 
     // Sets animatorPosition
+    //@param int v - vertical
+    //@param int h - horizontal
+    //@param int move - moving bool
     private void setAnimator(int v, int h, bool move)
     {
         anim.SetBool("is_moving", move);
@@ -91,6 +98,8 @@ public class EnemyMovement : MonoBehaviour
 
 
     // Calculates the attacking direction
+    //@param Transform player - transform of player
+    //@param Vector2 enemy - position of enemy
     public int getAttackDir(Transform player, Vector2 enemy)
     {
         if ((enemy.x >= (player.position.x - 2)) || (enemy.x <= (player.position.x + 2)))
@@ -139,5 +148,3 @@ public class EnemyMovement : MonoBehaviour
 
 
 }
-
-// TODO: add focus on player when too far away

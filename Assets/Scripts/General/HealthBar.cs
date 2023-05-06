@@ -8,6 +8,7 @@ public class PlayerHealthBar : MonoBehaviour
     public GameObject chara; //Player Gameobject
 
     private Health ch; //instance of health
+
     
 
     void Awake()
@@ -21,8 +22,7 @@ public class PlayerHealthBar : MonoBehaviour
         }
 
         catch { 
-            // TODO: figure out why this throws
-            print("beep");
+            print("Error has happened within the health bar component.");
         }
     }
 

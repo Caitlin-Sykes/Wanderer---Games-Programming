@@ -9,9 +9,13 @@ public class LevelNav : MonoBehaviour
 
     public GridController gc;
 
+    private int start;
+
     public GameObject currentRoom {get; set;}
 
     public GameObject player;
+
+    public GameObject escape;
 
     void Awake() {
         cam = this.GetComponent<Camera>();
@@ -19,7 +23,8 @@ public class LevelNav : MonoBehaviour
 
     //A function to generate the starting room
     public void startPlayerRoom() {
-        currentRoom = gc.rooms[lg.randomRoom()];
+        start = lg.randomRoom();
+        currentRoom = gc.rooms[start];
     }
 
     //A function to initialise the starting camera
@@ -42,6 +47,25 @@ public class LevelNav : MonoBehaviour
         Instantiate(player, pos.position, Quaternion.identity); 
 
 
+    }
+
+    public void escapeRoom() {
+        int randomRoom = lg.randomRoom();
+
+        if (start != randomRoom) {
+
+            //Sets current room to new room
+            GameObject room = gc.rooms[randomRoom];
+            
+            //Gets the initial spawn location
+            Transform pos = room.transform.Find("SpawnInit");
+            
+            Instantiate(escape, pos.position, Quaternion.identity);
+        }
+
+        else {
+            escapeRoom();
+        }
     }
 
     //A function to move the camera to the next room
@@ -72,13 +96,20 @@ public class LevelNav : MonoBehaviour
             pos = currentRoom.transform.Find("SpawnR");
 
         }
-       
+
+        //Gets the current health
+        int health = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>().health;
+
         //Destroys previous player object
         Destroy(GameObject.FindGameObjectWithTag("Player"));
+        
         //Sets camera to the centre of the room
         cam.transform.localPosition = Vector3.Lerp(transform.position, currentRoom.transform.Find("SpawnInit").position, 1); 
 
         //Instantiate new player
-        Instantiate(player, pos.position, Quaternion.identity); 
+         Instantiate(player, pos.position, Quaternion.identity); 
+
+        //Sets the new health
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Health>().setHealth(health);
     }
 }
